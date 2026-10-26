@@ -90,6 +90,17 @@ p{margin:0 0 1rem; color:var(--muted); max-width:38em}
 .orb img{position:absolute; inset:0; width:100%; height:100%;
   object-fit:cover; object-position:50% 32%;
   animation:float 5.2s ease-in-out infinite}
+
+/* tap-to-talk avatar */
+.orb{appearance:none; padding:0; cursor:pointer; color:inherit;
+  -webkit-tap-highlight-color:transparent; touch-action:manipulation;
+  transition:transform .18s ease}
+.orb:hover{transform:translateY(-2px)}
+.orb:active{transform:scale(.955)}
+.orb:focus-visible{outline:3px solid var(--primary); outline-offset:6px}
+.orb.poke{animation:boing .6s cubic-bezier(.28,.84,.42,1)}
+@keyframes boing{0%{transform:scale(1)}30%{transform:scale(.93)}
+  60%{transform:scale(1.05)}100%{transform:scale(1)}}
 .eyes{transform-box:fill-box; transform-origin:center; animation:blink 5.6s infinite}
 .mouth{transform-box:fill-box; transform-origin:center}
 .talking .mouth{animation:talk .24s ease-in-out infinite}
@@ -183,6 +194,7 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wr
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .orb img,.eyes,.badge,.caret,.rip,.portrait img{animation:none !important}
+  .orb{transition:none} .orb:hover,.orb:active{transform:none}
   .btn,.btn .arw{transition:none}
 }
 </style>
@@ -225,10 +237,12 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wr
       </div>
 
       <div class="actor" id="actor">
-        <div class="orb">
+        <button class="orb" id="orb" type="button"
+                aria-label="Hear Gonela Abhilash introduce himself"
+                title="Tap to hear from me">
           <img src="portrait.jpg" width="760" height="821"
                alt="Gonela Abhilash, CPC — HCC risk adjustment coder">
-        </div>
+        </button>
         <div class="bubble" aria-hidden="true"><span id="say"></span><i class="caret" aria-hidden="true"></i></div>
         <p class="sr-only">Gonela Abhilash, CPC-certified HCC risk adjustment coder. Career goal: to run
           the risk-adjustment function for a US practice, audit-safe and remote from the UK. Skills:
@@ -395,7 +409,7 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wr
   const slot = document.getElementById('portrait2');
   if (heroImg && slot) slot.appendChild(heroImg.cloneNode(true));
 
-  /* Typewriter: the character introduces himself, cycling four lines. */
+  /* Typewriter: the avatar introduces himself; tapping him speaks the next line now. */
   const LINES = [
     "Hi — I'm Gonela Abhilash, a CPC-certified HCC risk adjustment coder.",
     "Career goal: run the risk-adjustment function for a US practice — audit-safe, and remote from the UK.",
@@ -404,25 +418,39 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wr
   ];
   const actor = document.getElementById('actor');
   const say = document.getElementById('say');
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    say.textContent = LINES.join(' ');
-  } else {
-    let i = 0, j = 0, del = false;
-    (function tick() {
-      const line = LINES[i];
-      say.textContent = line.slice(0, j);
-      if (!del) {
-        actor.classList.add('talking');
-        if (j < line.length) { j++; return setTimeout(tick, 20); }
-        actor.classList.remove('talking');
-        del = true;
-        return setTimeout(tick, 2800);
-      }
-      j--;
-      if (j <= 0) { del = false; i = (i + 1) % LINES.length; }
-      setTimeout(tick, 12);
-    })();
-  }
+  const orb = document.getElementById('orb');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i = 0, j = 0, del = false, timer = null;
+
+  const tick = () => {
+    const line = LINES[i];
+    say.textContent = line.slice(0, j);
+    if (!del) {
+      actor.classList.add('talking');
+      if (j < line.length) { j++; timer = setTimeout(tick, 20); return; }
+      actor.classList.remove('talking');
+      del = true; timer = setTimeout(tick, 2800); return;
+    }
+    j--;
+    if (j <= 0) { del = false; i = (i + 1) % LINES.length; }
+    timer = setTimeout(tick, 12);
+  };
+
+  if (reduce) say.textContent = LINES[0];
+  else tick();
+
+  /* Tap / click / Enter on the avatar: bounce, buzz, then speak the next line at once. */
+  orb.addEventListener('click', () => {
+    clearTimeout(timer);
+    actor.classList.remove('talking');
+    actor.classList.add('poke');
+    setTimeout(() => actor.classList.remove('poke'), 620);
+    if (navigator.vibrate) navigator.vibrate(12);
+    i = (i + 1) % LINES.length;
+    if (reduce) { say.textContent = LINES[i]; return; }
+    j = 0; del = false; say.textContent = '';
+    timer = setTimeout(tick, 60);
+  });
 
   /* Ripple on every button press, from the pointer position. */
   document.querySelectorAll('.btn').forEach(btn => {
