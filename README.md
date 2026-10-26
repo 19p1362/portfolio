@@ -126,3 +126,14 @@ Send me 10 charts. If my coding does not clear your QA threshold, you owe nothin
    copy. Update LinkedIn contact info to the same number so a client calling the site reaches a
    line the profile also shows. Add the +44 prefix everywhere; a bare 07344 number reads as
    local-only.
+
+---
+
+## Deploy (this repo)
+
+`index.html` is the live site — no build step, no dependencies. To publish:
+
+1. Netlify → Add new site → Import from GitHub → `19p1362/portfolio` → publish directory `/` (blank), build command blank.
+2. Then point the existing `abhilashportfolio15.netlify.app` site at it, or swap the LinkedIn website field to the new URL.
+
+Three sections: hero/about → services → credentials & contact. Single file, inline CSS, zero JS, respects dark mode.
