@@ -84,9 +84,11 @@ p{margin:0 0 1rem; color:var(--muted); max-width:38em}
 .orb{position:relative; width:100%; max-width:330px; aspect-ratio:1; border-radius:50%;
   background:radial-gradient(circle at 50% 45%, var(--mint-soft), #fff 70%);
   border:1px solid var(--line); display:grid; place-items:center; overflow:hidden}
+.orb{border-color:var(--mint); box-shadow:0 0 0 6px var(--mint-soft)}
 .orb::before{content:""; position:absolute; right:-14%; bottom:-24%; width:74%; height:74%;
   border-radius:50%; background:var(--mint); opacity:.45}
-.orb svg{position:relative; width:78%; height:auto; color:var(--ink);
+.orb img{position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:50% 32%;
   animation:float 5.2s ease-in-out infinite}
 .eyes{transform-box:fill-box; transform-origin:center; animation:blink 5.6s infinite}
 .mouth{transform-box:fill-box; transform-origin:center}
@@ -149,7 +151,8 @@ p{margin:0 0 1rem; color:var(--muted); max-width:38em}
 .panel.sky{background:var(--sky-soft); border-color:var(--sky)}
 .portrait{display:flex; align-items:center; justify-content:center;
   background:var(--mint-soft); border-color:#D6F0E2; min-height:200px}
-.portrait svg{width:60%; color:var(--ink); animation:float 6s ease-in-out infinite}
+.portrait img{width:72%; height:auto; border-radius:50%; border:1px solid var(--mint);
+  animation:float 6s ease-in-out infinite}
 label{display:block; font-size:.72rem; font-weight:650; letter-spacing:.06em;
   text-transform:uppercase; color:var(--muted); margin-bottom:.3rem}
 .field{margin-bottom:.8rem}
@@ -179,7 +182,7 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wr
   clip:rect(0,0,0,0); white-space:nowrap; border:0}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .orb svg,.eyes,.badge,.caret,.rip,.portrait svg{animation:none !important}
+  .orb img,.eyes,.badge,.caret,.rip,.portrait img{animation:none !important}
   .btn,.btn .arw{transition:none}
 }
 </style>
@@ -223,26 +226,8 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wr
 
       <div class="actor" id="actor">
         <div class="orb">
-          <svg viewBox="0 0 200 214" role="img" aria-label="Illustrated portrait of Gonela Abhilash">
-            <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M34 210c3-33 26-52 66-52s63 19 66 52"/>
-              <path d="M86 132v22M114 132v22"/>
-              <circle cx="100" cy="86" r="44"/>
-              <path d="M58 74c2-27 20-44 42-44s40 17 42 44"/>
-              <path d="M58 74c-3 6-4 12-3 18M142 74c3 6 4 12 3 18"/>
-              <path d="M78 76h16M106 76h16"/>
-              <g class="eyes">
-                <circle cx="86" cy="89" r="3.4" fill="currentColor" stroke="none"/>
-                <circle cx="114" cy="89" r="3.4" fill="currentColor" stroke="none"/>
-              </g>
-              <path d="M100 90v12"/>
-              <path class="smile" d="M90 112q10 7 20 0"/>
-              <rect class="mouth" x="88" y="113" width="24" height="5" rx="2.5" fill="currentColor" stroke="none"/>
-              <path d="M84 152l16 20 16-20"/>
-              <path d="M100 172v38"/>
-              <rect class="badge" x="131" y="176" width="16" height="11" rx="1.5"/>
-            </g>
-          </svg>
+          <img src="portrait.jpg" width="760" height="821"
+               alt="Gonela Abhilash, CPC — HCC risk adjustment coder">
         </div>
         <div class="bubble" aria-hidden="true"><span id="say"></span><i class="caret" aria-hidden="true"></i></div>
         <p class="sr-only">Gonela Abhilash, CPC-certified HCC risk adjustment coder. Career goal: to run
@@ -405,10 +390,10 @@ footer.site .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wr
 
 <script>
 (() => {
-  /* Portrait is drawn once in the hero and cloned into the form panel. */
-  const heroSvg = document.querySelector('.orb svg');
+  /* Portrait appears once in the hero, cloned into the form panel. */
+  const heroImg = document.querySelector('.orb img');
   const slot = document.getElementById('portrait2');
-  if (heroSvg && slot) slot.appendChild(heroSvg.cloneNode(true));
+  if (heroImg && slot) slot.appendChild(heroImg.cloneNode(true));
 
   /* Typewriter: the character introduces himself, cycling four lines. */
   const LINES = [
