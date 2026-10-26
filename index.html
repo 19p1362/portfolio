@@ -71,7 +71,60 @@
   dd{margin:0 0 .6rem; font-size:.98rem}
   .tight dd{margin-bottom:1.1rem}
 
+  /* ── actor (animated character) ── */
+  .hero{display:grid; grid-template-columns:1fr 232px; gap:2.5rem; align-items:start}
+  @media(max-width:720px){ .hero{grid-template-columns:1fr} .actor{order:-1; width:150px; margin:0 auto} }
+  .actor{margin:0; display:flex; flex-direction:column; gap:.85rem; align-items:center}
+  .actor svg{width:100%; height:auto; color:var(--ink); overflow:visible;
+    animation:float 5.2s ease-in-out infinite}
+  .actor .eyes{transform-box:fill-box; transform-origin:center; animation:blink 5.6s infinite}
+  .actor .mouth{transform-box:fill-box; transform-origin:center}
+  .actor.talking .mouth{animation:talk .24s ease-in-out infinite}
+  .actor .smile{opacity:1; transition:opacity .15s}
+  .actor.talking .smile{opacity:0}
+  .actor:not(.talking) .mouth{opacity:0}
+  .actor .badge{stroke:var(--accent); animation:pulse 3s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+  @keyframes talk{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(2)}}
+  @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+
+  .bubble{
+    position:relative; border:1px solid var(--line); border-radius:6px;
+    padding:.85rem .95rem; font-size:.82rem; line-height:1.55; color:var(--mute);
+    min-height:6.9rem; width:100%; background:transparent
+  }
+  .bubble strong{color:var(--ink); font-weight:600}
+  .bubble::before{
+    content:""; position:absolute; top:-6px; left:50%; margin-left:-5px;
+    width:9px; height:9px; background:var(--bg);
+    border-left:1px solid var(--line); border-top:1px solid var(--line);
+    transform:rotate(45deg)
+  }
+  .caret{display:inline-block; width:1px; height:1em; background:var(--accent);
+    vertical-align:-.15em; margin-left:2px; animation:blink 1s steps(1) infinite}
+
+  /* ── buttons ── */
+  .btn{position:relative; overflow:hidden; transition:background .22s ease, color .22s ease,
+    border-color .22s ease, transform .18s ease, box-shadow .22s ease}
+  .btn:hover{transform:translateY(-1px); box-shadow:0 6px 16px -8px rgba(0,0,0,.45)}
+  .btn:active{transform:translateY(1px); box-shadow:none}
+  .btn .arw{display:inline-block; transition:transform .28s cubic-bezier(.2,.7,.3,1); margin-left:.4rem}
+  .btn:hover .arw{transform:translateX(4px)}
+  .rip{position:absolute; width:10px; height:10px; margin:-5px 0 0 -5px; border-radius:50%;
+    background:currentColor; opacity:.4; pointer-events:none; animation:rip .6s ease-out forwards}
+  @keyframes rip{to{transform:scale(18); opacity:0}}
+
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+  @media (prefers-reduced-motion:reduce){
+    .actor svg,.actor .eyes,.actor .badge,.caret,.rip{animation:none !important}
+    .btn,.btn .arw{transition:none}
+  }
+
   footer{padding:4rem 1.5rem 6rem; text-align:center; font-size:.78rem; color:var(--mute)}
+  footer p{margin:0; max-width:none; color:inherit}
   .skip{position:absolute; left:-9999px}
   .skip:focus{left:1rem; top:1rem; background:var(--bg); padding:.5rem 1rem; border:1px solid var(--ink); z-index:9}
 </style>
@@ -82,12 +135,43 @@
 
   <!-- 1 ───────────────────────────────────────── -->
   <section id="top" aria-labelledby="name">
-    <p class="eyebrow">HCC Risk Adjustment Coder · CPC (AAPC)</p>
-    <h1 id="name">Gonela Abhilash</h1>
-    <p class="sub">
-      ICD-10-CM · CPT · HCPCS · HCC Risk Adjustment.<br>
-      Remote coding support for US Medicare Advantage and ACA practices.
-    </p>
+    <div class="hero">
+      <div>
+        <p class="eyebrow">HCC Risk Adjustment Coder · CPC (AAPC)</p>
+        <h1 id="name">Gonela Abhilash</h1>
+        <p class="sub">
+          ICD-10-CM · CPT · HCPCS · HCC Risk Adjustment.<br>
+          Remote coding support for US Medicare Advantage and ACA practices.
+        </p>
+      </div>
+
+      <figure class="actor" id="actor">
+        <svg viewBox="0 0 200 214" role="img" aria-label="Line-drawn portrait of Gonela Abhilash">
+          <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M34 210c3-33 26-52 66-52s63 19 66 52"/>
+            <path d="M86 132v22M114 132v22"/>
+            <circle cx="100" cy="86" r="44"/>
+            <path d="M58 74c2-27 20-44 42-44s40 17 42 44"/>
+            <path d="M58 74c-3 6-4 12-3 18M142 74c3 6 4 12 3 18"/>
+            <path d="M78 76h16M106 76h16"/>
+            <g class="eyes">
+              <circle cx="86" cy="89" r="3.4" fill="currentColor" stroke="none"/>
+              <circle cx="114" cy="89" r="3.4" fill="currentColor" stroke="none"/>
+            </g>
+            <path d="M100 90v12"/>
+            <path class="smile" d="M90 112q10 7 20 0"/>
+            <rect class="mouth" x="88" y="113" width="24" height="5" rx="2.5" fill="currentColor" stroke="none"/>
+            <path d="M84 152l16 20 16-20"/>
+            <path d="M100 172v38"/>
+            <rect class="badge" x="131" y="176" width="16" height="11" rx="1.5"/>
+          </g>
+        </svg>
+        <div class="bubble" aria-hidden="true"><span id="say"></span><i class="caret" aria-hidden="true"></i></div>
+        <p class="sr-only">Gonela Abhilash, CPC-certified HCC risk adjustment coder. Career goal: to run
+          the risk-adjustment function for a US practice, audit-safe and remote from the UK. Skills:
+          ICD-10-CM, CPT, HCPCS, HCC V28, MEAT criteria, APIXIO, CIOX, Elevance MRA, Datavant.</p>
+      </figure>
+    </div>
 
     <p>
       I'm a CPC-certified medical coder with five years of high-volume HCC and
@@ -111,7 +195,7 @@
     </p>
 
     <p class="cta">
-      <a class="btn" href="mailto:abisandey@gmail.com?subject=Chart%20review%20sample">Book a chart review sample</a>
+      <a class="btn" href="mailto:abisandey@gmail.com?subject=Chart%20review%20sample">Book a chart review sample<span class="arw" aria-hidden="true">→</span></a>
       <a class="btn btn-ghost" href="mailto:abisandey@gmail.com">abisandey@gmail.com</a>
     </p>
   </section>
@@ -194,14 +278,61 @@
     <h3>Send me 10 charts.</h3>
     <p>If my coding doesn't clear your QA threshold, you owe nothing.</p>
     <p class="cta">
-      <a class="btn" href="mailto:abisandey@gmail.com?subject=10%20chart%20sample&amp;body=Plan%3A%20%0AChart%20volume%3A%20%0ASpecialty%3A%20%0AQA%20threshold%3A%20">Start with a sample</a>
+      <a class="btn" href="mailto:abisandey@gmail.com?subject=10%20chart%20sample&amp;body=Plan%3A%20%0AChart%20volume%3A%20%0ASpecialty%3A%20%0AQA%20threshold%3A%20">Start with a sample<span class="arw" aria-hidden="true">→</span></a>
     </p>
   </section>
 
 </main>
 
 <footer>
-  Gonela Abhilash · CPC (02180641) · Reg. Pharmacist (TG076206) · Coventry, UK
+  <p>Gonela Abhilash · CPC (02180641) · Reg. Pharmacist (TG076206) · Coventry, UK</p>
 </footer>
+
+<script>
+(() => {
+  /* The character speaks: one line at a time, typewriter, mouth animates while typing. */
+  const LINES = [
+    "Hi — I'm Gonela Abhilash, a CPC-certified HCC risk adjustment coder.",
+    "Career goal: run the risk-adjustment function for a US practice — audit-safe, and remote from the UK.",
+    "Skills: ICD-10-CM, CPT, HCPCS, HCC and V28 rules, MEAT criteria, APIXIO, CIOX, Elevance MRA, Datavant.",
+    "Also a registered pharmacist and MSc Public Health student, so I read the clinical story, not just the code."
+  ];
+  const actor = document.getElementById('actor');
+  const say = document.getElementById('say');
+
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    say.textContent = LINES.join(' ');
+  } else {
+    let i = 0, j = 0, del = false;
+    (function tick() {
+      const line = LINES[i];
+      say.textContent = line.slice(0, j);
+      if (!del) {
+        actor.classList.add('talking');
+        if (j < line.length) { j++; return setTimeout(tick, 20); }
+        actor.classList.remove('talking');
+        del = true;
+        return setTimeout(tick, 2800);
+      }
+      j--;
+      if (j <= 0) { del = false; i = (i + 1) % LINES.length; }
+      setTimeout(tick, 12);
+    })();
+  }
+
+  /* Ripple from the click point on every button. */
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const box = btn.getBoundingClientRect();
+      const r = document.createElement('span');
+      r.className = 'rip';
+      r.style.left = ((e.clientX || box.left + box.width / 2) - box.left) + 'px';
+      r.style.top = ((e.clientY || box.top + box.height / 2) - box.top) + 'px';
+      btn.appendChild(r);
+      setTimeout(() => r.remove(), 620);
+    });
+  });
+})();
+</script>
 </body>
 </html>
