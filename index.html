@@ -5,292 +5,412 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gonela Abhilash — HCC Risk Adjustment Coder (CPC) | Remote for US Practices</title>
 <meta name="description" content="CPC-certified HCC / Risk Adjustment coder with 5+ years across Elevance, Wellcare, Centene, Kaiser Permanente, Datavant and CIOX. 120 profiler charts/day at 95%+ QA accuracy. Remote from the UK for US practices.">
-<meta name="theme-color" content="#fafaf9">
+<meta name="theme-color" content="#ffffff">
 <style>
-  :root{
-    --bg:#fafaf9; --ink:#111110; --mute:#6b6b66; --line:#e4e4e0; --accent:#0f766e;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
-  }
-  @media (prefers-color-scheme:dark){
-    :root{--bg:#0c0c0b; --ink:#f2f2ef; --mute:#9a9a94; --line:#24241f; --accent:#5eead4;}
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans);
-    font-size:17px; line-height:1.65; letter-spacing:-.01em;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:680px; margin:0 auto; padding:var(--pad,6rem 1.5rem)}
-  section{padding:0}
-  .rule{height:1px; background:var(--line); border:0; margin:5rem 0}
-  a{color:inherit; text-decoration:none; border-bottom:1px solid var(--line)}
-  a:hover{border-color:var(--accent); color:var(--accent)}
-  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border:0}
+:root{
+  --bg:#ffffff; --ink:#20242B; --muted:#5C6470;
+  --primary:#4169C9; --primary-dk:#33559F; --mint:#A7E3C0; --mint-soft:#EAF9F1;
+  --sky:#DCE8FA; --sky-soft:#F1F6FE; --line:#E6EBF5; --grey:#F5F6F8;
+  --r:16px; --r-sm:10px; --pill:999px;
+  --sans:ui-rounded,-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --shadow:0 10px 30px -18px rgba(32,36,43,.35);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans);
+  font-size:16.5px; line-height:1.6; letter-spacing:-.005em; -webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:var(--primary); text-decoration:none}
+a:hover{color:var(--primary-dk)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:3px solid var(--primary); outline-offset:2px; border-radius:var(--r-sm)}
+.wrap{max-width:1080px; margin:0 auto; padding:0 1.5rem}
+.skip{position:absolute; left:-9999px}
+.skip:focus{left:1rem; top:1rem; z-index:9; background:#fff; padding:.5rem 1rem;
+  border:1px solid var(--primary); border-radius:var(--r-sm)}
 
-  .eyebrow{
-    font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--mute); margin:0 0 1.75rem
-  }
-  h1{
-    font-size:clamp(2.4rem,7vw,4rem); line-height:1.02; letter-spacing:-.045em;
-    font-weight:600; margin:0 0 1.25rem
-  }
-  h2{
-    font-size:1.05rem; letter-spacing:.02em; text-transform:none;
-    font-weight:600; margin:0 0 2rem; color:var(--ink)
-  }
-  h3{font-size:1rem; font-weight:600; margin:2.25rem 0 .4rem}
-  .sub{font-size:1.15rem; color:var(--mute); margin:0 0 2.5rem; max-width:34em}
-  p{margin:0 0 1.15rem; max-width:36em; color:var(--ink)}
+/* header */
+header.site{position:sticky; top:0; z-index:20; background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.nav{display:flex; align-items:center; gap:1.5rem; height:68px}
+.logo{display:flex; align-items:center; gap:.55rem; font-weight:650; color:var(--ink); font-size:.98rem}
+.logo i{width:26px; height:26px; border-radius:8px; background:var(--primary); color:#fff;
+  display:grid; place-items:center; font-style:normal; font-size:.6rem; font-weight:700; letter-spacing:.02em}
+.nav nav{display:flex; gap:1.4rem; margin-left:auto; font-size:.9rem}
+.nav nav a{color:var(--muted)}
+.nav nav a:hover{color:var(--ink)}
+.nav .cta{margin-left:.35rem}
+@media(max-width:720px){ .nav nav{display:none} }
 
-  .stats{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;
-    margin:3rem 0; padding:2rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line)
-  }
-  .stats b{display:block; font-size:1.6rem; font-weight:600; letter-spacing:-.03em}
-  .stats span{font-size:.78rem; color:var(--mute); display:block; margin-top:.25rem; line-height:1.3}
-  @media(max-width:560px){ .stats{grid-template-columns:repeat(2,1fr)} }
+/* buttons */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
+  padding:.62rem 1.15rem; border-radius:var(--pill); border:1px solid var(--primary);
+  background:var(--primary); color:#fff; font:inherit; font-size:.9rem; font-weight:550;
+  cursor:pointer; position:relative; overflow:hidden; text-align:center;
+  transition:background .2s, color .2s, border-color .2s, transform .16s, box-shadow .2s}
+.btn:hover{background:var(--primary-dk); border-color:var(--primary-dk); color:#fff;
+  transform:translateY(-1px); box-shadow:var(--shadow)}
+.btn:active{transform:translateY(1px); box-shadow:none}
+.btn.ghost{background:#fff; color:var(--primary); border-color:var(--line)}
+.btn.ghost:hover{background:var(--sky-soft); color:var(--primary-dk); border-color:var(--sky)}
+.btn .arw{transition:transform .26s cubic-bezier(.2,.7,.3,1)}
+.btn:hover .arw{transform:translateX(4px)}
+.rip{position:absolute; width:10px; height:10px; margin:-5px 0 0 -5px; border-radius:50%;
+  background:currentColor; opacity:.35; pointer-events:none; animation:rip .6s ease-out forwards}
+@keyframes rip{to{transform:scale(20); opacity:0}}
 
-  .bar{font-size:.8rem; color:var(--mute); letter-spacing:.02em; line-height:1.9}
-  .cta{display:flex; gap:.6rem; flex-wrap:wrap; margin:2rem 0 0}
-  .btn{
-    display:inline-block; padding:.7rem 1.15rem; border:1px solid var(--ink);
-    border-radius:2px; font-size:.9rem; font-weight:500
-  }
-  .btn:hover{background:var(--ink); color:var(--bg); border-color:var(--ink)}
-  .btn-ghost{border-color:var(--line); color:var(--mute)}
-  .btn-ghost:hover{background:transparent; color:var(--accent); border-color:var(--accent)}
+/* type */
+.eyebrow{font-size:.75rem; letter-spacing:.13em; text-transform:uppercase; color:var(--primary);
+  font-weight:650; margin:0 0 1rem}
+h1{font-size:clamp(2.1rem,5.2vw,3.35rem); line-height:1.06; letter-spacing:-.035em;
+  font-weight:680; margin:0 0 1rem}
+h2{font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.2; letter-spacing:-.02em;
+  font-weight:650; margin:0 0 .6rem}
+h3{font-size:1rem; font-weight:620; margin:0 0 .3rem}
+p{margin:0 0 1rem; color:var(--muted); max-width:38em}
+.lead{font-size:1.08rem; color:var(--muted)}
+.section{padding:4.5rem 0}
+.section.tight{padding:3rem 0 4.5rem}
 
-  ol,ul{margin:0 0 1.15rem; padding-left:1.1rem; max-width:36em}
-  li{margin:.3rem 0; color:var(--ink)}
-  ol{list-style:decimal} li::marker{color:var(--mute)}
+/* hero */
+.hero{display:grid; grid-template-columns:1.15fr .85fr; gap:3rem; align-items:center;
+  padding-top:3.5rem; padding-bottom:4rem}
+@media(max-width:880px){ .hero{grid-template-columns:1fr; gap:2rem} }
+.cta-row{display:flex; gap:.6rem; flex-wrap:wrap; margin:1.6rem 0 0}
+.trust{margin:1.4rem 0 0; font-size:.8rem; color:var(--muted); letter-spacing:.01em; line-height:1.9}
 
-  dl{margin:0; display:grid; gap:.85rem}
-  dt{font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--mute)}
-  dd{margin:0 0 .6rem; font-size:.98rem}
-  .tight dd{margin-bottom:1.1rem}
+/* actor */
+.actor{display:flex; flex-direction:column; align-items:center; gap:.9rem}
+.orb{position:relative; width:100%; max-width:330px; aspect-ratio:1; border-radius:50%;
+  background:radial-gradient(circle at 50% 45%, var(--mint-soft), #fff 70%);
+  border:1px solid var(--line); display:grid; place-items:center; overflow:hidden}
+.orb::before{content:""; position:absolute; right:-14%; bottom:-24%; width:74%; height:74%;
+  border-radius:50%; background:var(--mint); opacity:.45}
+.orb svg{position:relative; width:78%; height:auto; color:var(--ink);
+  animation:float 5.2s ease-in-out infinite}
+.eyes{transform-box:fill-box; transform-origin:center; animation:blink 5.6s infinite}
+.mouth{transform-box:fill-box; transform-origin:center}
+.talking .mouth{animation:talk .24s ease-in-out infinite}
+.talking .smile{opacity:0}
+.actor:not(.talking) .mouth{opacity:0}
+.badge{stroke:var(--primary)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+@keyframes talk{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(2)}}
+.bubble{position:relative; background:var(--sky-soft); border:1px solid var(--sky);
+  border-radius:var(--r); padding:.85rem 1rem; font-size:.83rem; line-height:1.55;
+  color:var(--ink); width:100%; min-height:6.4rem}
+.caret{display:inline-block; width:1px; height:1em; background:var(--primary);
+  vertical-align:-.15em; margin-left:2px; animation:blink 1s steps(1) infinite}
 
-  /* ── actor (animated character) ── */
-  .hero{display:grid; grid-template-columns:1fr 232px; gap:2.5rem; align-items:start}
-  @media(max-width:720px){ .hero{grid-template-columns:1fr} .actor{order:-1; width:150px; margin:0 auto} }
-  .actor{margin:0; display:flex; flex-direction:column; gap:.85rem; align-items:center}
-  .actor svg{width:100%; height:auto; color:var(--ink); overflow:visible;
-    animation:float 5.2s ease-in-out infinite}
-  .actor .eyes{transform-box:fill-box; transform-origin:center; animation:blink 5.6s infinite}
-  .actor .mouth{transform-box:fill-box; transform-origin:center}
-  .actor.talking .mouth{animation:talk .24s ease-in-out infinite}
-  .actor .smile{opacity:1; transition:opacity .15s}
-  .actor.talking .smile{opacity:0}
-  .actor:not(.talking) .mouth{opacity:0}
-  .actor .badge{stroke:var(--accent); animation:pulse 3s ease-in-out infinite}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-  @keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
-  @keyframes talk{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(2)}}
-  @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+/* cards */
+.cards-2{display:grid; grid-template-columns:1fr 1fr; gap:1.1rem}
+@media(max-width:720px){ .cards-2{grid-template-columns:1fr} }
+.card{background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:1.5rem;
+  display:flex; flex-direction:column}
+.card.sky{background:var(--sky); border-color:transparent}
+.card h3{font-size:1.02rem}
+.card p{font-size:.9rem; margin-bottom:1rem}
+.card .more{font-size:.85rem; font-weight:600; margin-top:auto}
 
-  .bubble{
-    position:relative; border:1px solid var(--line); border-radius:6px;
-    padding:.85rem .95rem; font-size:.82rem; line-height:1.55; color:var(--mute);
-    min-height:6.9rem; width:100%; background:transparent
-  }
-  .bubble strong{color:var(--ink); font-weight:600}
-  .bubble::before{
-    content:""; position:absolute; top:-6px; left:50%; margin-left:-5px;
-    width:9px; height:9px; background:var(--bg);
-    border-left:1px solid var(--line); border-top:1px solid var(--line);
-    transform:rotate(45deg)
-  }
-  .caret{display:inline-block; width:1px; height:1em; background:var(--accent);
-    vertical-align:-.15em; margin-left:2px; animation:blink 1s steps(1) infinite}
+/* split */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:2.6rem; align-items:start}
+@media(max-width:880px){ .split{grid-template-columns:1fr; gap:1.6rem} }
+.stack{display:grid; gap:.7rem}
+.row{display:flex; align-items:center; gap:.9rem; border:1px solid var(--line);
+  border-radius:var(--r); padding:.85rem 1rem; background:#fff}
+.row i{width:34px; height:34px; flex:0 0 34px; border-radius:50%; background:var(--sky);
+  display:grid; place-items:center; font-style:normal; font-size:.68rem; font-weight:700;
+  color:var(--primary-dk)}
+.row b{display:block; font-size:.92rem; font-weight:620; color:var(--ink)}
+.row span{font-size:.8rem; color:var(--muted)}
+.row.mint{background:var(--mint-soft); border-color:#D6F0E2}
+.row.grey{background:var(--grey); border-color:transparent}
 
-  /* ── buttons ── */
-  .btn{position:relative; overflow:hidden; transition:background .22s ease, color .22s ease,
-    border-color .22s ease, transform .18s ease, box-shadow .22s ease}
-  .btn:hover{transform:translateY(-1px); box-shadow:0 6px 16px -8px rgba(0,0,0,.45)}
-  .btn:active{transform:translateY(1px); box-shadow:none}
-  .btn .arw{display:inline-block; transition:transform .28s cubic-bezier(.2,.7,.3,1); margin-left:.4rem}
-  .btn:hover .arw{transform:translateX(4px)}
-  .rip{position:absolute; width:10px; height:10px; margin:-5px 0 0 -5px; border-radius:50%;
-    background:currentColor; opacity:.4; pointer-events:none; animation:rip .6s ease-out forwards}
-  @keyframes rip{to{transform:scale(18); opacity:0}}
+/* dashboard */
+.dash{background:var(--sky-soft); border:1px solid var(--sky); border-radius:calc(var(--r) + 4px);
+  padding:1.6rem; margin-top:2.4rem}
+.dash .top{display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; margin-bottom:1.2rem}
+.dash h2{font-size:1.05rem; margin:0 1rem 0 0}
+.chip{font-size:.72rem; font-weight:650; padding:.3rem .7rem; border-radius:var(--pill);
+  background:#fff; color:var(--primary-dk); border:1px solid var(--sky)}
+.chip.ok{background:var(--mint); border-color:transparent; color:#1E5A3C}
+.metrics{display:grid; grid-template-columns:repeat(4,1fr); gap:.8rem}
+@media(max-width:720px){ .metrics{grid-template-columns:1fr 1fr} }
+.metric{background:#fff; border:1px solid var(--line); border-radius:var(--r-sm); padding:.9rem 1rem}
+.metric b{display:block; font-size:1.32rem; font-weight:680; letter-spacing:-.02em; color:var(--ink)}
+.metric span{font-size:.74rem; color:var(--muted); line-height:1.3; display:block; margin-top:.15rem}
 
-  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
-    clip:rect(0,0,0,0); white-space:nowrap; border:0}
+/* 3-col */
+.tri{display:grid; grid-template-columns:1.1fr .8fr 1fr; gap:1.1rem; align-items:stretch}
+@media(max-width:960px){ .tri{grid-template-columns:1fr 1fr} }
+@media(max-width:640px){ .tri{grid-template-columns:1fr} }
+.panel{background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:1.35rem}
+.panel.sky{background:var(--sky-soft); border-color:var(--sky)}
+.portrait{display:flex; align-items:center; justify-content:center;
+  background:var(--mint-soft); border-color:#D6F0E2; min-height:200px}
+.portrait svg{width:60%; color:var(--ink); animation:float 6s ease-in-out infinite}
+label{display:block; font-size:.72rem; font-weight:650; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:.3rem}
+.field{margin-bottom:.8rem}
+input,select{width:100%; font:inherit; font-size:.9rem; color:var(--ink); background:#fff;
+  border:1px solid var(--line); border-radius:var(--r-sm); padding:.55rem .7rem;
+  transition:border-color .18s, box-shadow .18s}
+input:focus,select:focus{border-color:var(--primary); box-shadow:0 0 0 3px var(--sky)}
+ul.checks{list-style:none; margin:0 0 1.1rem; padding:0}
+ul.checks li{position:relative; padding-left:1.5rem; margin:.45rem 0; font-size:.88rem; color:var(--muted)}
+ul.checks li::before{content:""; position:absolute; left:0; top:.42em; width:12px; height:7px;
+  border-left:2px solid var(--primary); border-bottom:2px solid var(--primary);
+  transform:rotate(-45deg)}
 
-  @media (prefers-reduced-motion:reduce){
-    .actor svg,.actor .eyes,.actor .badge,.caret,.rip{animation:none !important}
-    .btn,.btn .arw{transition:none}
-  }
+/* credentials */
+dl.grid{display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:0}
+@media(max-width:720px){ dl.grid{grid-template-columns:1fr} }
+dl.grid div{background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:1.1rem 1.2rem}
+dt{font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
+  font-weight:650; margin-bottom:.35rem}
+dd{margin:0; font-size:.91rem; color:var(--ink); line-height:1.55}
 
-  footer{padding:4rem 1.5rem 6rem; text-align:center; font-size:.78rem; color:var(--mute)}
-  footer p{margin:0; max-width:none; color:inherit}
-  .skip{position:absolute; left:-9999px}
-  .skip:focus{left:1rem; top:1rem; background:var(--bg); padding:.5rem 1rem; border:1px solid var(--ink); z-index:9}
+footer.site{border-top:1px solid var(--line); padding:2.2rem 1.5rem 3rem; font-size:.8rem;
+  color:var(--muted)}
+footer.site .wrap{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+
+.sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap; border:0}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .orb svg,.eyes,.badge,.caret,.rip,.portrait svg{animation:none !important}
+  .btn,.btn .arw{transition:none}
+}
 </style>
 </head>
 <body>
 <a class="skip" href="#services">Skip to content</a>
-<main class="wrap">
 
-  <!-- 1 ───────────────────────────────────────── -->
-  <section id="top" aria-labelledby="name">
-    <div class="hero">
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top"><i>CPC</i> Gonela Abhilash</a>
+    <nav aria-label="Sections">
+      <a href="#top">Home</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Credentials</a>
+      <a href="https://www.linkedin.com/in/abigonela" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <a class="btn cta" href="#request">Send 10 charts<span class="arw" aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1 -->
+  <section id="top">
+    <div class="wrap hero">
       <div>
-        <p class="eyebrow">HCC Risk Adjustment Coder · CPC (AAPC)</p>
-        <h1 id="name">Gonela Abhilash</h1>
-        <p class="sub">
-          ICD-10-CM · CPT · HCPCS · HCC Risk Adjustment.<br>
-          Remote coding support for US Medicare Advantage and ACA practices.
+        <p class="eyebrow">HCC Risk Adjustment · CPC (AAPC)</p>
+        <h1>Your risk scores,<br>audit-safe.</h1>
+        <p class="lead">
+          ICD-10-CM, CPT and HCPCS coding for US Medicare Advantage and ACA practices —
+          reviewed by a registered pharmacist, delivered remote from the UK.
+        </p>
+        <p class="cta-row">
+          <a class="btn" href="#request">Book a chart review sample<span class="arw" aria-hidden="true">→</span></a>
+          <a class="btn ghost" href="#services">See what I do</a>
+        </p>
+        <p class="trust">
+          Elevance MRA · Wellcare · Centene (CNC) · Kaiser Permanente · Datavant · CIOX · Aetna ACA
         </p>
       </div>
 
-      <figure class="actor" id="actor">
-        <svg viewBox="0 0 200 214" role="img" aria-label="Line-drawn portrait of Gonela Abhilash">
-          <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M34 210c3-33 26-52 66-52s63 19 66 52"/>
-            <path d="M86 132v22M114 132v22"/>
-            <circle cx="100" cy="86" r="44"/>
-            <path d="M58 74c2-27 20-44 42-44s40 17 42 44"/>
-            <path d="M58 74c-3 6-4 12-3 18M142 74c3 6 4 12 3 18"/>
-            <path d="M78 76h16M106 76h16"/>
-            <g class="eyes">
-              <circle cx="86" cy="89" r="3.4" fill="currentColor" stroke="none"/>
-              <circle cx="114" cy="89" r="3.4" fill="currentColor" stroke="none"/>
+      <div class="actor" id="actor">
+        <div class="orb">
+          <svg viewBox="0 0 200 214" role="img" aria-label="Illustrated portrait of Gonela Abhilash">
+            <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M34 210c3-33 26-52 66-52s63 19 66 52"/>
+              <path d="M86 132v22M114 132v22"/>
+              <circle cx="100" cy="86" r="44"/>
+              <path d="M58 74c2-27 20-44 42-44s40 17 42 44"/>
+              <path d="M58 74c-3 6-4 12-3 18M142 74c3 6 4 12 3 18"/>
+              <path d="M78 76h16M106 76h16"/>
+              <g class="eyes">
+                <circle cx="86" cy="89" r="3.4" fill="currentColor" stroke="none"/>
+                <circle cx="114" cy="89" r="3.4" fill="currentColor" stroke="none"/>
+              </g>
+              <path d="M100 90v12"/>
+              <path class="smile" d="M90 112q10 7 20 0"/>
+              <rect class="mouth" x="88" y="113" width="24" height="5" rx="2.5" fill="currentColor" stroke="none"/>
+              <path d="M84 152l16 20 16-20"/>
+              <path d="M100 172v38"/>
+              <rect class="badge" x="131" y="176" width="16" height="11" rx="1.5"/>
             </g>
-            <path d="M100 90v12"/>
-            <path class="smile" d="M90 112q10 7 20 0"/>
-            <rect class="mouth" x="88" y="113" width="24" height="5" rx="2.5" fill="currentColor" stroke="none"/>
-            <path d="M84 152l16 20 16-20"/>
-            <path d="M100 172v38"/>
-            <rect class="badge" x="131" y="176" width="16" height="11" rx="1.5"/>
-          </g>
-        </svg>
+          </svg>
+        </div>
         <div class="bubble" aria-hidden="true"><span id="say"></span><i class="caret" aria-hidden="true"></i></div>
         <p class="sr-only">Gonela Abhilash, CPC-certified HCC risk adjustment coder. Career goal: to run
           the risk-adjustment function for a US practice, audit-safe and remote from the UK. Skills:
           ICD-10-CM, CPT, HCPCS, HCC V28, MEAT criteria, APIXIO, CIOX, Elevance MRA, Datavant.</p>
-      </figure>
-    </div>
-
-    <p>
-      I'm a CPC-certified medical coder with five years of high-volume HCC and
-      risk-adjustment work, based in Coventry in the United Kingdom and working UK hours
-      around US client time zones. My background is unusual for a coder: I'm a registered
-      pharmacist (TG Pharmacy Council, TG076206) and completing an MSc in Public Health at
-      Anglia Ruskin — so clinical documentation reads to me as pharmacology and epidemiology,
-      not codes alone.
-    </p>
-
-    <div class="stats">
-      <div><b>120</b><span>profiler charts / day</span></div>
-      <div><b>12</b><span>full charts / day</span></div>
-      <div><b>95%+</b><span>QA accuracy</span></div>
-      <div><b>5+ yrs</b><span>HCC / MRA since 2016</span></div>
-    </div>
-
-    <p class="bar">
-      Elevance MRA · Wellcare · Centene (CNC) · Kaiser Permanente · Datavant · CIOX ·
-      Aetna ACA · Prominence
-    </p>
-
-    <p class="cta">
-      <a class="btn" href="mailto:abisandey@gmail.com?subject=Chart%20review%20sample">Book a chart review sample<span class="arw" aria-hidden="true">→</span></a>
-      <a class="btn btn-ghost" href="mailto:abisandey@gmail.com">abisandey@gmail.com</a>
-    </p>
-  </section>
-
-  <hr class="rule">
-
-  <!-- 2 ───────────────────────────────────────── -->
-  <section id="services" aria-labelledby="svc">
-    <h2 id="svc">What I take off your plate</h2>
-
-    <h3>Full chart review &amp; validation</h3>
-    <p>
-      Deep-dive review of provider documentation — progress notes, consults, diagnostic
-      reports — for up to 100 Medicare Advantage charts per batch. Every chart is read for
-      MEAT criteria, not keyword-matched.
-    </p>
-
-    <h3>HCC / risk adjustment coding</h3>
-    <p>
-      ICD-10-CM, CPT and HCPCS capture mapped to CMS guidelines and V28 rules, with suspect
-      conditions supported by documentation rather than inference. Delivered on APIXIO and
-      CIOX, plus the MRA platform your plan already runs.
-    </p>
-
-    <h3>RADV audit readiness</h3>
-    <p>
-      Retrospective and prospective review with a documentation trail that survives audit:
-      gaps closed, every diagnosis traceable to a signed note.
-    </p>
-
-    <h3>Profiler triage</h3>
-    <p>
-      High-volume first-pass screening at 120 charts/day to clear backlogs fast, with
-      full-chart escalation on anything that needs clinical judgement.
-    </p>
-
-    <h3>How it runs</h3>
-    <ol>
-      <li>You send a sample batch and your coding guidelines.</li>
-      <li>I return a coded sample with rationale notes.</li>
-      <li>You set the QA threshold; I work to it.</li>
-      <li>Weekly volume and accuracy reporting.</li>
-    </ol>
-  </section>
-
-  <hr class="rule">
-
-  <!-- 3 ───────────────────────────────────────── -->
-  <section id="contact" aria-labelledby="cred">
-    <h2 id="cred">Credentials and how to reach me</h2>
-
-    <dl class="tight">
-      <div>
-        <dt>Certification</dt>
-        <dd>Certified Professional Coder (CPC) — AAPC, ID 02180641</dd>
-        <dt>Registration</dt>
-        <dd>Registered Pharmacist — Telangana State Pharmacy Council, TG076206</dd>
-        <dt>Education</dt>
-        <dd>MSc Public Health (in progress) — Anglia Ruskin University, UK<br>
-            B.Pharm — Vaagdi Institute of Pharmaceutical Sciences</dd>
-        <dt>Experience</dt>
-        <dd>HCC / Risk Adjustment Medical Coder — Augustus Healthcare LLP, Sep 2024 – Nov 2025<br>
-            HCC / Risk Adjustment Coding — Elevance MRA, Datavant, Wellcare, CNC, Prominence,
-            Kaiser Permanente, 2019 – 2024<br>
-            Earlier chart review and coding roles, 2016 – 2019</dd>
-        <dt>Tools</dt>
-        <dd>APIXIO · CIOX · Elevance MRA · Datavant · Wellcare MRA · CNC · KP MRA</dd>
-        <dt>Contact</dt>
-        <dd>
-          <a href="mailto:abisandey@gmail.com">abisandey@gmail.com</a><br>
-          <a href="tel:+447344796772">+44 7344 796772</a> — WhatsApp available<br>
-          <a href="https://www.linkedin.com/in/abigonela">linkedin.com/in/abigonela</a><br>
-          Coventry, United Kingdom — remote for US clients
-        </dd>
-        <dt>Response time</dt>
-        <dd>Within one business day</dd>
       </div>
-    </dl>
+    </div>
 
-    <h3>Send me 10 charts.</h3>
-    <p>If my coding doesn't clear your QA threshold, you owe nothing.</p>
-    <p class="cta">
-      <a class="btn" href="mailto:abisandey@gmail.com?subject=10%20chart%20sample&amp;body=Plan%3A%20%0AChart%20volume%3A%20%0ASpecialty%3A%20%0AQA%20threshold%3A%20">Start with a sample<span class="arw" aria-hidden="true">→</span></a>
-    </p>
+    <div class="wrap">
+      <div class="cards-2">
+        <article class="card sky">
+          <h3>Featured — full chart review</h3>
+          <p>Up to 100 Medicare Advantage charts per batch, read for MEAT criteria rather than
+             keyword-matched. Every diagnosis traceable to a signed note.</p>
+          <a class="more" href="#services">Read more →</a>
+        </article>
+        <article class="card">
+          <h3>Book a sample</h3>
+          <p>Send 10 charts. If my coding does not clear your QA threshold, you owe nothing.</p>
+          <a class="more" href="#request">Send 10 charts →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="services" class="section">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="eyebrow">Services</p>
+          <h2>Coding that survives a RADV audit.</h2>
+          <p>
+            Five years of high-volume HCC and risk-adjustment work across commercial, ACA and
+            Medicare Advantage books. I am a registered pharmacist and completing an MSc in Public
+            Health, so documentation reads as pharmacology and epidemiology — not as codes alone.
+          </p>
+          <ul class="checks">
+            <li>Profiler triage at 120 charts/day to clear backlogs</li>
+            <li>Full chart review at 12 comprehensive charts/day</li>
+            <li>V28 rules, suspect-condition capture, CMS guidelines</li>
+            <li>QA feedback applied, audit-ready documentation trail</li>
+          </ul>
+          <p class="cta-row">
+            <a class="btn" href="#request">Send 10 charts<span class="arw" aria-hidden="true">→</span></a>
+            <a class="btn ghost" href="mailto:abisandey@gmail.com">Email me</a>
+          </p>
+        </div>
+
+        <div class="stack">
+          <div class="row mint"><i>EV</i><div><b>Elevance MRA</b><span>Commercial &amp; ACA risk adjustment</span></div></div>
+          <div class="row"><i>DA</i><div><b>Datavant · CIOX</b><span>Full chart review, 120 profilers/day</span></div></div>
+          <div class="row grey"><i>WC</i><div><b>Wellcare · Centene</b><span>Medicare Advantage, V28 rules</span></div></div>
+          <div class="row"><i>KP</i><div><b>Kaiser Permanente</b><span>Suspect condition capture &amp; validation</span></div></div>
+        </div>
+      </div>
+
+      <div class="dash">
+        <div class="top">
+          <h2>Performance overview</h2>
+          <span class="chip ok">QA 95%+</span>
+          <span class="chip">V28 compliant</span>
+          <span class="chip">RADV ready</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><b>120</b><span>profiler charts / day</span></div>
+          <div class="metric"><b>12</b><span>full charts / day</span></div>
+          <div class="metric"><b>95%+</b><span>QA accuracy</span></div>
+          <div class="metric"><b>5+ yrs</b><span>HCC / MRA since 2016</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="contact" class="section tight">
+    <div class="wrap">
+      <div class="tri" id="request">
+        <form class="panel sky" id="req" novalidate>
+          <h3>Request a sample</h3>
+          <p style="font-size:.84rem">Four fields, then it opens a pre-filled email.</p>
+          <div class="field">
+            <label for="kind">Engagement</label>
+            <select id="kind" name="kind">
+              <option>Full chart review</option>
+              <option>Profiler triage</option>
+              <option>RADV audit support</option>
+              <option>Ongoing retainer</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="spec">Specialty</label>
+            <select id="spec" name="spec">
+              <option>Medicare Advantage HCC</option>
+              <option>ACA / commercial risk adjustment</option>
+              <option>D-SNP</option>
+              <option>Mixed</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="plat">Platform</label>
+            <select id="plat" name="plat">
+              <option>Elevance MRA</option>
+              <option>Datavant / CIOX</option>
+              <option>Wellcare</option>
+              <option>Centene (CNC)</option>
+              <option>Other / your system</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="start">Start date</label>
+            <input id="start" name="start" type="date">
+          </div>
+          <button class="btn" type="submit" style="width:100%">
+            Book a chart review sample<span class="arw" aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <div class="panel portrait" id="portrait2" aria-hidden="true"></div>
+
+        <div class="panel">
+          <p class="eyebrow" style="margin-bottom:.6rem">What you get</p>
+          <h3>Ten charts, coded with rationale.</h3>
+          <ul class="checks">
+            <li>Coded sample with note-level rationale</li>
+            <li>Gaps flagged against your guidelines</li>
+            <li>Turnaround agreed before I start</li>
+            <li>Weekly volume and accuracy reporting</li>
+          </ul>
+          <a class="btn ghost" href="mailto:abisandey@gmail.com">Email me<span class="arw" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <h2 style="margin:3rem 0 1.2rem">Credentials and contact</h2>
+      <dl class="grid">
+        <div><dt>Certification</dt><dd>Certified Professional Coder (CPC) — AAPC, ID 02180641</dd></div>
+        <div><dt>Registration</dt><dd>Registered Pharmacist — Telangana State Pharmacy Council, TG076206</dd></div>
+        <div><dt>Education</dt><dd>MSc Public Health (in progress) — Anglia Ruskin University, UK<br>
+            B.Pharm — Vaagdi Institute of Pharmaceutical Sciences</dd></div>
+        <div><dt>Experience</dt><dd>HCC / Risk Adjustment Medical Coder — Augustus Healthcare LLP, Sep 2024 – Nov 2025<br>
+            Elevance MRA, Datavant, Wellcare, CNC, Prominence, Kaiser Permanente, 2019 – 2024</dd></div>
+        <div><dt>Contact</dt><dd>
+            <a href="mailto:abisandey@gmail.com">abisandey@gmail.com</a><br>
+            <a href="tel:+447344796772">+44 7344 796772</a> — WhatsApp<br>
+            <a href="https://www.linkedin.com/in/abigonela">linkedin.com/in/abigonela</a></dd></div>
+        <div><dt>Location &amp; hours</dt><dd>Coventry, United Kingdom — remote for US clients.
+            UK business hours overlapping US mornings. Reply within one business day.</dd></div>
+      </dl>
+    </div>
   </section>
 
 </main>
 
-<footer>
-  <p>Gonela Abhilash · CPC (02180641) · Reg. Pharmacist (TG076206) · Coventry, UK</p>
+<footer class="site">
+  <div class="wrap">
+    <span>Gonela Abhilash · CPC (02180641) · Reg. Pharmacist (TG076206)</span>
+    <span>Coventry, UK · remote for US practices</span>
+  </div>
 </footer>
 
 <script>
 (() => {
-  /* The character speaks: one line at a time, typewriter, mouth animates while typing. */
+  /* Portrait is drawn once in the hero and cloned into the form panel. */
+  const heroSvg = document.querySelector('.orb svg');
+  const slot = document.getElementById('portrait2');
+  if (heroSvg && slot) slot.appendChild(heroSvg.cloneNode(true));
+
+  /* Typewriter: the character introduces himself, cycling four lines. */
   const LINES = [
     "Hi — I'm Gonela Abhilash, a CPC-certified HCC risk adjustment coder.",
     "Career goal: run the risk-adjustment function for a US practice — audit-safe, and remote from the UK.",
@@ -299,7 +419,6 @@
   ];
   const actor = document.getElementById('actor');
   const say = document.getElementById('say');
-
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     say.textContent = LINES.join(' ');
   } else {
@@ -320,7 +439,7 @@
     })();
   }
 
-  /* Ripple from the click point on every button. */
+  /* Ripple on every button press, from the pointer position. */
   document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', e => {
       const box = btn.getBoundingClientRect();
@@ -331,6 +450,23 @@
       btn.appendChild(r);
       setTimeout(() => r.remove(), 620);
     });
+  });
+
+  /* No backend: the form composes a pre-filled email instead of pretending to submit. */
+  const form = document.getElementById('req');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = k => (form.elements[k] && form.elements[k].value) || 'not specified';
+    const body = [
+      'Engagement: ' + v('kind'),
+      'Specialty: ' + v('spec'),
+      'Platform: ' + v('plat'),
+      'Start date: ' + v('start'),
+      '', 'Practice:', 'Chart volume:', 'QA threshold:'
+    ].join('\n');
+    location.href = 'mailto:abisandey@gmail.com?subject='
+      + encodeURIComponent('Chart review sample request')
+      + '&body=' + encodeURIComponent(body);
   });
 })();
 </script>
