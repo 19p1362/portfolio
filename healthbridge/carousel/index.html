@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>HealthBridge — LinkedIn carousel (1080×1350)</title>
+<style>
+  :root{
+    --ink:#0b1220; --paper:#fbfbfd; --muted:#5a6478; --line:#e3e7ef;
+    --blue:#005eb8; --aqua:#00a499; --mint:#e6f6f0; --sky:#e8f1fb;
+    --amber:#ffb020; --rose:#d33a4a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#d9dee8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+  .slide{
+    width:1080px;height:1350px;background:var(--paper);color:var(--ink);
+    padding:92px 84px 74px;display:flex;flex-direction:column;justify-content:center;
+    margin:24px auto;position:relative;overflow:hidden;
+    box-shadow:0 18px 60px rgba(11,18,32,.16)
+  }
+  .slide.dark{background:linear-gradient(158deg,#0b1220 0%,#12224a 52%,#0b3a5c 100%);color:#fff}
+  .slide.dark .k{color:#8fd8ff}
+  .k{font-size:22px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:26px}
+  h1{font-size:86px;line-height:1.02;letter-spacing:-.035em;font-weight:800;margin-bottom:30px}
+  h2{font-size:64px;line-height:1.05;letter-spacing:-.03em;font-weight:800;margin-bottom:34px}
+  p{font-size:32px;line-height:1.34;color:var(--muted);max-width:24ch}
+  p.wide{max-width:none}
+  .dark p{color:#c9d6e8}
+  .big{font-size:120px;font-weight:800;letter-spacing:-.04em;line-height:.95}
+  ul{list-style:none}
+  li{font-size:32px;line-height:1.3;margin-bottom:26px;padding-left:52px;position:relative;color:var(--ink)}
+  li:before{content:"";position:absolute;left:0;top:14px;width:20px;height:20px;border-radius:50%;
+    background:linear-gradient(135deg,var(--blue),var(--aqua))}
+  li small{display:block;font-size:25px;color:var(--muted);margin-top:8px;line-height:1.3}
+  .num{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--blue);
+    color:#fff;font-size:26px;font-weight:800;margin-bottom:24px}
+  .foot{position:absolute;left:84px;right:84px;bottom:40px;display:flex;justify-content:space-between;
+    font-size:21px;letter-spacing:.06em;color:#8a93a6;text-transform:uppercase}
+  .dark .foot{color:#7f93b0}
+  .cardrow{display:grid;gap:22px;margin-top:14px}
+  .card{border:2px solid var(--line);border-radius:22px;padding:30px 32px;background:#fff}
+  .card h3{font-size:26px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+  .card p{font-size:27px;line-height:1.32;max-width:none}
+  .card.mint{background:var(--mint);border-color:#c9e9dd}
+  .card.sky{background:var(--sky);border-color:#cfe0f4}
+  .flag{display:inline-block;font-size:24px;font-weight:800;padding:8px 18px;border-radius:999px;
+    background:#fdeaea;color:#a8261f;letter-spacing:.04em}
+  .ok{display:inline-block;font-size:24px;font-weight:800;padding:8px 18px;border-radius:999px;
+    background:var(--mint);color:#007a70;letter-spacing:.04em}
+  svg{max-width:100%;height:auto}
+  .quote{font-size:44px;line-height:1.22;letter-spacing:-.02em;font-weight:700;color:var(--ink)}
+  .url{font-size:36px;font-weight:800;color:var(--blue);letter-spacing:-.01em;margin-top:10px}
+  @page{size:1080px 1350px;margin:0}
+  @media print{
+    html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+    .slide:last-child{page-break-after:auto}
+  }
+  body.solo{padding:0}
+  body.solo .slide{display:none;margin:0}
+  body.solo .slide.on{display:flex}
+</style>
+</head>
+<body>
+
+<!-- 1 · COVER -->
+<section class="slide dark">
+  <div class="k">UK primary care · the invisible queue</div>
+  <h1>The most expensive<br>envelope in the NHS</h1>
+  <p>A hospital sends one letter.<br>It lands in a GP practice and costs far more than the stamp.</p>
+  <div class="foot"><span>HealthBridge</span><span>1 / 10</span></div>
+</section>
+
+<!-- 2 · WHAT LANDS -->
+<section class="slide">
+  <div class="k">The problem · step one</div>
+  <h2>Every week, hundreds of letters arrive.</h2>
+  <p class="wide">Discharge summaries. Clinic letters. Outpatient results. Each one names a patient, a diagnosis and an action — in prose, in a PDF, usually with a barcode.</p>
+  <div class="foot"><span>HealthBridge</span><span>2 / 10</span></div>
+</section>
+
+<!-- 3 · THE SIX HANDOFFS -->
+<section class="slide">
+  <div class="k">The problem · where it leaks</div>
+  <h2>Six hands. Four chances to lose the meaning.</h2>
+  <svg viewBox="0 0 920 620" role="img" aria-label="Correspondence route from post to coded record, with the two steps that lose meaning marked">
+    <g font-size="26" font-family="-apple-system,Segoe UI,Roboto,Arial">
+      <rect x="0" y="0" width="410" height="96" rx="18" fill="#e8f1fb" stroke="#cfe0f4" stroke-width="2"/>
+      <text x="26" y="42" font-weight="800" fill="#005eb8">1 · Post arrives</text>
+      <text x="26" y="76" fill="#5a6478" font-size="22">paper + barcoded letters</text>
+
+      <rect x="510" y="0" width="410" height="96" rx="18" fill="#e8f1fb" stroke="#cfe0f4" stroke-width="2"/>
+      <text x="536" y="42" font-weight="800" fill="#005eb8">2 · Scan to PDF</text>
+      <text x="536" y="76" fill="#5a6478" font-size="22">readable by people only</text>
+
+      <rect x="510" y="180" width="410" height="96" rx="18" fill="#fdeaea" stroke="#f3c3c3" stroke-width="2"/>
+      <text x="536" y="222" font-weight="800" fill="#a8261f">3 · Read &amp; code by hand</text>
+      <text x="536" y="256" fill="#8a4a45" font-size="22">the bottleneck · minutes each</text>
+
+      <rect x="0" y="180" width="410" height="96" rx="18" fill="#fdeaea" stroke="#f3c3c3" stroke-width="2"/>
+      <text x="26" y="222" font-weight="800" fill="#a8261f">4 · File to the patient</text>
+      <text x="26" y="256" fill="#8a4a45" font-size="22">if anyone remembers</text>
+
+      <rect x="0" y="360" width="410" height="96" rx="18" fill="#fff4e0" stroke="#ffe2b0" stroke-width="2"/>
+      <text x="26" y="402" font-weight="800" fill="#8a5c00">5 · Recall / QOF depends</text>
+      <text x="26" y="436" fill="#8a6a35" font-size="22">on the code being right</text>
+
+      <rect x="510" y="360" width="410" height="96" rx="18" fill="#e6f6f0" stroke="#c9e9dd" stroke-width="2"/>
+      <text x="536" y="402" font-weight="800" fill="#007a70">6 · GP acts on it</text>
+      <text x="536" y="436" fill="#3f7d72" font-size="22">weeks later, sometimes</text>
+
+      <path d="M410 48 L500 48" stroke="#005eb8" stroke-width="3" marker-end="url(#ar)"/>
+      <path d="M715 96 L715 170" stroke="#a8261f" stroke-width="3" marker-end="url(#ar)"/>
+      <path d="M510 228 L420 228" stroke="#a8261f" stroke-width="3" marker-end="url(#ar)"/>
+      <path d="M205 276 L205 350" stroke="#c98a00" stroke-width="3" marker-end="url(#ar)"/>
+      <path d="M410 408 L500 408" stroke="#007a70" stroke-width="3" marker-end="url(#ar)"/>
+    </g>
+    <defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M0 0 L10 5 L0 10 z" fill="#5a6478"/>
+      </marker>
+    </defs>
+  </svg>
+  <div class="foot"><span>HealthBridge</span><span>3 / 10</span></div>
+</section>
+
+<!-- 4 · THE COST -->
+<section class="slide">
+  <div class="k">The problem · what it costs</div>
+  <h2>Three bills nobody sends.</h2>
+  <ul>
+    <li>Admin time<small>Every letter is read by a human before it becomes data — and read again if the code was wrong.</small></li>
+    <li>Coding gaps<small>An uncoded letter is invisible to recall, to QOF, and to the next clinician who sees the patient.</small></li>
+    <li>Delay<small>A result that sits in an inbox is clinically the same as a result that never arrived.</small></li>
+  </ul>
+  <div class="foot"><span>HealthBridge</span><span>4 / 10</span></div>
+</section>
+
+<!-- 5 · WHY THE OBVIOUS FIX FAILS -->
+<section class="slide">
+  <div class="k">Why &ldquo;we already scan them&rdquo; isn't the fix</div>
+  <h1 style="font-size:74px">A scanned letter<br>is a picture<br>of information.</h1>
+  <p class="wide">It cannot be searched, counted, recalled or trended. The surgery owns the file and still does not own the fact.</p>
+  <div class="foot"><span>HealthBridge</span><span>5 / 10</span></div>
+</section>
+
+<!-- 6 · TARGET STATE -->
+<section class="slide">
+  <div class="k">The target state</div>
+  <h2>Stop filing documents.<br>Start filing facts.</h2>
+  <div class="cardrow">
+    <div class="card sky"><h3>One patient</h3><p>Everything joins on the <b>NHS number</b> — not on a name typed twice.</p></div>
+    <div class="card mint"><h3>One code</h3><p>Each fact recorded as <b>SNOMED CT</b>, the standard the NHS already requires.</p></div>
+    <div class="card"><h3>One trail</h3><p>Who read it, who coded it, who changed it — and when.</p></div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>6 / 10</span></div>
+</section>
+
+<!-- 7 · WHAT HEALTHBRIDGE DOES -->
+<section class="slide dark">
+  <div class="k">The solution</div>
+  <h2>HealthBridge reads the<br>letter, proposes the code,<br>and asks a human.</h2>
+  <div class="cardrow" style="grid-template-columns:1fr 1fr 1fr;display:grid">
+    <div class="card" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22)">
+      <h3 style="color:#8fd8ff">1 · Ingest</h3><p style="color:#c9d6e8">Photo or PDF → structured fields. Discharge summary, clinic letter, lab result.</p></div>
+    <div class="card" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22)">
+      <h3 style="color:#8fd8ff">2 · Propose</h3><p style="color:#c9d6e8">Diagnosis, medication and action extracted, with a SNOMED CT code and a confidence.</p></div>
+    <div class="card" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22)">
+      <h3 style="color:#8fd8ff">3 · Confirm</h3><p style="color:#c9d6e8">A clinician accepts, edits or rejects. Only then does it enter the record.</p></div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>7 / 10</span></div>
+</section>
+
+<!-- 8 · THE LOOP -->
+<section class="slide">
+  <div class="k">The same engine, the whole visit</div>
+  <h2>Six steps. One thread.</h2>
+  <svg viewBox="0 0 920 420" role="img" aria-label="Six step loop: registration, vitals, consultation, prescription, pharmacy, follow-up">
+    <g font-size="24" font-family="-apple-system,Segoe UI,Roboto,Arial">
+      <rect x="0" y="60" width="280" height="120" rx="20" fill="#e8f1fb" stroke="#cfe0f4" stroke-width="2"/>
+      <text x="24" y="108" font-weight="800" fill="#005eb8">Registration</text><text x="24" y="146" fill="#5a6478" font-size="21">one ID</text>
+      <rect x="320" y="60" width="280" height="120" rx="20" fill="#e6f6f0" stroke="#c9e9dd" stroke-width="2"/>
+      <text x="344" y="108" font-weight="800" fill="#007a70">Vitals</text><text x="344" y="146" fill="#5a6478" font-size="21">trend, not a slip</text>
+      <rect x="640" y="60" width="280" height="120" rx="20" fill="#e8f1fb" stroke="#cfe0f4" stroke-width="2"/>
+      <text x="664" y="108" font-weight="800" fill="#005eb8">Consultation</text><text x="664" y="146" fill="#5a6478" font-size="21">SOAP once</text>
+      <rect x="640" y="240" width="280" height="120" rx="20" fill="#e6f6f0" stroke="#c9e9dd" stroke-width="2"/>
+      <text x="664" y="288" font-weight="800" fill="#007a70">Prescription</text><text x="664" y="326" fill="#5a6478" font-size="21">legible, coded</text>
+      <rect x="320" y="240" width="280" height="120" rx="20" fill="#e8f1fb" stroke="#cfe0f4" stroke-width="2"/>
+      <text x="344" y="288" font-weight="800" fill="#005eb8">Pharmacy</text><text x="344" y="326" fill="#5a6478" font-size="21">dispensed = recorded</text>
+      <rect x="0" y="240" width="280" height="120" rx="20" fill="#e6f6f0" stroke="#c9e9dd" stroke-width="2"/>
+      <text x="24" y="288" font-weight="800" fill="#007a70">Follow-up</text><text x="24" y="326" fill="#5a6478" font-size="21">watched, not forgotten</text>
+      <g stroke="#005eb8" stroke-width="3" fill="none" marker-end="url(#ar2)">
+        <path d="M280 120 L310 120"/><path d="M600 120 L630 120"/>
+        <path d="M780 180 L780 230"/><path d="M630 300 L610 300"/><path d="M310 300 L290 300"/>
+      </g>
+      <path d="M140 240 C140 200 60 180 60 180" stroke="#00a499" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#ar2)"/>
+    </g>
+    <defs><marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#005eb8"/></marker></defs>
+  </svg>
+  <p class="wide" style="margin-top:26px">A letter is one round of this loop. HealthBridge runs the whole loop, so the next visit opens with the previous one already loaded.</p>
+  <div class="foot"><span>HealthBridge</span><span>8 / 10</span></div>
+</section>
+
+<!-- 9 · GUARDRAILS + UK GATES -->
+<section class="slide">
+  <div class="k">Guardrails · and the gates I have not passed</div>
+  <h2>What it refuses to do matters more.</h2>
+  <div class="cardrow" style="grid-template-columns:1fr 1fr;display:grid;gap:22px">
+    <div class="card mint"><h3>Human confirms</h3><p>No code enters a record without a clinician. No autonomous diagnosis.</p></div>
+    <div class="card mint"><h3>Tenant isolation</h3><p>One practice cannot see another's patients. Ever.</p></div>
+  </div>
+  <div style="margin-top:34px">
+    <p class="wide" style="margin-bottom:18px"><b>UK selling needs:</b> DTAC · DSPT · DPIA / UK GDPR · Cyber Essentials or ISO 27001 · DCB0129 with a named Clinical Safety Officer.</p>
+    <span class="flag">none of these claimed yet</span>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>9 / 10</span></div>
+</section>
+
+<!-- 10 · PILOT -->
+<section class="slide dark">
+  <div class="k">Pilot</div>
+  <h2>30 days. Three numbers.<br>Then you decide.</h2>
+  <ul style="margin-bottom:30px">
+    <li style="color:#fff">Minutes per letter<small style="color:#a9bcd6">before versus after</small></li>
+    <li style="color:#fff">Codes accepted<small style="color:#a9bcd6">share a clinician accepts unchanged</small></li>
+    <li style="color:#fff">Recalls closed<small style="color:#a9bcd6">by day 30, not rolled into next month</small></li>
+  </ul>
+  <p class="url" style="color:#8fd8ff">19p1362.github.io/portfolio/healthbridge</p>
+  <p style="font-size:24px;color:#a9bcd6;margin-top:12px">Gonela Abhilash · CPC · registered pharmacist · MSc Public Health, ARU</p>
+  <div class="foot"><span>HealthBridge</span><span>10 / 10</span></div>
+</section>
+
+<script>
+/* #3 renders slide 3 alone, sized for a 1080×1350 screenshot */
+(function(){
+  var n=parseInt((location.hash||'').replace('#',''),10);
+  if(!n)return;
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  if(s[n-1]){document.body.classList.add('solo');s[n-1].classList.add('on');}
+})();
+</script>
+</body>
+</html>
