@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HealthBridge — minimal deck (UK framing)</title>
+<style>
+  :root{
+    --ink:#0f1523; --muted:#5a6478; --line:#e3e7ef; --paper:#fbfbfd;
+    --accent:#005eb8;  /* NHS blue */
+    --accent2:#00a499; /* NHS aqua green */
+    --mint:#e6f6f0; --sky:#e8f1fb; --amber:#c98a00;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:#eef1f6;color:var(--ink);
+    font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+  .deck{position:relative}
+  .slide{display:none;background:var(--paper);border:1px solid var(--line);
+    width:min(1120px,94vw);aspect-ratio:16/9;margin:2.2vh auto;padding:clamp(26px,4vw,58px);
+    box-shadow:0 14px 44px rgba(15,21,35,.10);border-radius:6px;overflow:hidden;position:relative}
+  .slide.on{display:flex;flex-direction:column;justify-content:center}
+  .kicker{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-size:clamp(30px,4.4vw,58px);line-height:1.04;letter-spacing:-.03em;margin:0 0 18px;font-weight:800}
+  h2{font-size:clamp(24px,3.2vw,40px);line-height:1.08;letter-spacing:-.025em;margin:0 0 22px;font-weight:800}
+  p{margin:0 0 14px;max-width:76ch}
+  .lede{font-size:clamp(17px,1.9vw,23px);color:var(--muted);max-width:70ch}
+  .tiny{font-size:14px;color:var(--muted)}
+  ul{margin:0;padding-left:1.1em}
+  li{margin:0 0 9px}
+  .cols{display:grid;gap:clamp(16px,2.6vw,38px)}
+  .cols.two{grid-template-columns:1fr 1fr}
+  .cols.three{grid-template-columns:repeat(3,1fr)}
+  .box{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:#fff}
+  .box h3{margin:0 0 8px;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+  .box.mint{background:var(--mint);border-color:#c9e9dd}
+  .box.sky{background:var(--sky);border-color:#cfe0f4}
+  .num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;
+    background:var(--accent);color:#fff;font-size:14px;font-weight:800;margin-right:10px}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+  .pill{display:inline-block;font-size:12.5px;font-weight:700;padding:3px 9px;border-radius:999px;
+    background:var(--sky);color:var(--accent)}
+  .pill.no{background:#fdeaea;color:#a8261f}
+  .foot{position:absolute;left:clamp(26px,4vw,58px);right:clamp(26px,4vw,58px);bottom:18px;
+    display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+  nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#0f1523;
+    color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;display:flex;gap:12px;align-items:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:9}
+  nav button{font:inherit;font-weight:700;background:transparent;border:1px solid rgba(255,255,255,.35);
+    color:#fff;border-radius:999px;padding:4px 11px;cursor:pointer}
+  nav button:focus-visible{outline:2px solid #ffd166;outline-offset:2px}
+  svg{max-width:100%;height:auto;display:block}
+  @media print{
+    body{background:#fff}
+    nav{display:none}
+    .slide{display:flex!important;flex-direction:column;justify-content:center;
+      width:100%;height:auto;aspect-ratio:auto;min-height:0;page-break-after:always;break-after:page;
+      border:0;box-shadow:none;margin:0;padding:12mm 14mm;border-radius:0;zoom:.82}
+    .slide:last-child{page-break-after:auto}
+    .slide svg{max-height:56mm}
+    .slide h2{font-size:26px;margin-bottom:14px}
+    .slide h1{font-size:34px}
+    @page{size:A4 landscape;margin:0}
+  }
+  @media(max-width:760px){
+    .cols.two,.cols.three{grid-template-columns:1fr}
+    .slide{aspect-ratio:auto;min-height:74vh}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- 1 -->
+  <section class="slide on">
+    <div class="kicker">HealthBridge · 30-second version</div>
+    <h1>One patient record,<br>from paper to follow-up.</h1>
+    <p class="lede">Clinics already do the work. They just write it down six times, on paper, and lose it between steps.
+      HealthBridge makes the six steps one thread — and leaves the thread exportable as FHIR.</p>
+    <div class="foot"><span>Gonela Abhilash · CPC · MSc Public Health (ARU)</span><span>1 / 10</span></div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="kicker">The problem</div>
+    <h2>Nothing is broken. Everything is disconnected.</h2>
+    <div class="cols two">
+      <div>
+        <ul>
+          <li><b>The nurse writes a BP on a slip.</b> The doctor asks for it again.</li>
+          <li><b>The prescription leaves as handwriting.</b> The pharmacy guesses, then phones.</li>
+          <li><b>The follow-up date lives in a diary</b> nobody outside that room can read.</li>
+        </ul>
+        <p class="tiny" style="margin-top:18px">Each handoff loses a fact. Multiply by 60 patients a day.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 420 240" role="img" aria-label="Paper ring: five separate notes that never join up">
+          <rect x="18" y="30" width="120" height="56" rx="10" fill="#fff" stroke="#e3e7ef"/>
+          <text x="34" y="55" font-size="13" fill="#5a6478">Vitals slip</text>
+          <rect x="150" y="96" width="120" height="56" rx="10" fill="#fff" stroke="#e3e7ef"/>
+          <text x="166" y="121" font-size="13" fill="#5a6478">Handwritten Rx</text>
+          <rect x="282" y="30" width="120" height="56" rx="10" fill="#fff" stroke="#e3e7ef"/>
+          <text x="298" y="55" font-size="13" fill="#5a6478">Lab printout</text>
+          <rect x="60" y="164" width="120" height="56" rx="10" fill="#fff" stroke="#e3e7ef"/>
+          <text x="76" y="189" font-size="13" fill="#5a6478">Follow-up diary</text>
+          <rect x="230" y="164" width="150" height="56" rx="10" fill="#fff" stroke="#e3e7ef"/>
+          <text x="246" y="189" font-size="13" fill="#5a6478">Discharge summary</text>
+          <g stroke="#c9d2e2" stroke-dasharray="4 5">
+            <line x1="138" y1="58" x2="150" y2="110"/><line x1="270" y1="58" x2="250" y2="110"/>
+            <line x1="210" y1="152" x2="150" y2="164"/><line x1="230" y1="152" x2="270" y2="152"/>
+          </g>
+          <text x="150" y="228" font-size="12.5" fill="#a8261f">no shared key · no history · no audit trail</text>
+        </svg>
+      </div>
+    </div>
+    <div class="foot"><span>HealthBridge</span><span>2 / 10</span></div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="kicker">What it is</div>
+    <h2>Three layers, one promise: the record follows the patient.</h2>
+    <div class="cols three">
+      <div class="box sky">
+        <h3>1 · Ingest</h3>
+        <p>Photo or PDF of a prescription, lab report or discharge letter → structured fields.</p>
+        <p class="tiny">OCR + extraction → FHIR resources</p>
+      </div>
+      <div class="box mint">
+        <h3>2 · Orchestrate</h3>
+        <p>Ten care agents watch adherence, follow-ups, results and risk — and escalate to a human.</p>
+        <p class="tiny">Agent loop + audit log</p>
+      </div>
+      <div class="box">
+        <h3>3 · Isolate</h3>
+        <p>Every clinic is a tenant. One platform, no shared data, consent recorded per patient.</p>
+        <p class="tiny">Tenant-scoped access · audit trail</p>
+      </div>
+    </div>
+    <p class="tiny" style="margin-top:22px">The differentiator is not the model. It is that step 3 keeps the patient's data with the patient's clinic.</p>
+    <div class="foot"><span>HealthBridge</span><span>3 / 10</span></div>
+  </section>
+
+  <!-- 4 — the diagram -->
+  <section class="slide">
+    <div class="kicker">The loop</div>
+    <h2>One visit, six steps, one thread.</h2>
+    <svg viewBox="0 0 1000 300" role="img" aria-label="Six step clinic loop from registration to follow-up, each writing into one FHIR record">
+      <defs>
+        <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#005eb8"/>
+        </marker>
+      </defs>
+      <rect x="8" y="88" width="140" height="76" rx="14" fill="#e8f1fb" stroke="#cfe0f4"/>
+      <text x="26" y="120" font-size="14" font-weight="700" fill="#005eb8">Registration</text>
+      <text x="26" y="140" font-size="12" fill="#5a6478">one ID, history</text>
+
+      <rect x="176" y="88" width="140" height="76" rx="14" fill="#e6f6f0" stroke="#c9e9dd"/>
+      <text x="194" y="120" font-size="14" font-weight="700" fill="#007a70">Vitals</text>
+      <text x="194" y="140" font-size="12" fill="#5a6478">numbers, not slips</text>
+
+      <rect x="344" y="88" width="140" height="76" rx="14" fill="#e8f1fb" stroke="#cfe0f4"/>
+      <text x="362" y="120" font-size="14" font-weight="700" fill="#005eb8">Consultation</text>
+      <text x="362" y="140" font-size="12" fill="#5a6478">SOAP once</text>
+
+      <rect x="512" y="88" width="140" height="76" rx="14" fill="#e6f6f0" stroke="#c9e9dd"/>
+      <text x="530" y="120" font-size="14" font-weight="700" fill="#007a70">Prescription</text>
+      <text x="530" y="140" font-size="12" fill="#5a6478">legible, coded</text>
+
+      <rect x="680" y="88" width="140" height="76" rx="14" fill="#e8f1fb" stroke="#cfe0f4"/>
+      <text x="698" y="120" font-size="14" font-weight="700" fill="#005eb8">Pharmacy</text>
+      <text x="698" y="140" font-size="12" fill="#5a6478">dispensed = recorded</text>
+
+      <rect x="848" y="88" width="140" height="76" rx="14" fill="#e6f6f0" stroke="#c9e9dd"/>
+      <text x="866" y="120" font-size="14" font-weight="700" fill="#007a70">Follow-up</text>
+      <text x="866" y="140" font-size="12" fill="#5a6478">scheduled + watched</text>
+
+      <g stroke="#005eb8" stroke-width="2" marker-end="url(#a)">
+        <line x1="150" y1="126" x2="172" y2="126"/><line x1="318" y1="126" x2="340" y2="126"/>
+        <line x1="486" y1="126" x2="508" y2="126"/><line x1="654" y1="126" x2="676" y2="126"/>
+        <line x1="822" y1="126" x2="844" y2="126"/>
+      </g>
+
+      <path d="M918 168 C918 236 760 236 620 236 C480 236 320 236 180 236" fill="none"
+            stroke="#00a499" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#a)"/>
+      <text x="330" y="222" font-size="13" fill="#007a70">next visit opens with the previous one already loaded</text>
+
+      <rect x="8" y="272" width="980" height="1" fill="#e3e7ef"/>
+      <text x="8" y="294" font-size="13" fill="#5a6478">Every step writes to the same patient thread — one encounter, one ID, one audit trail.</text>
+    </svg>
+    <div class="foot"><span>HealthBridge</span><span>4 / 10</span></div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="kicker">Why FHIR matters</div>
+    <h2>The record is a data format, not a UI.</h2>
+    <div class="cols two">
+      <div>
+        <table>
+          <tr><th>Clinic step</th><th>Resource written</th></tr>
+          <tr><td>Registration</td><td><code>Patient</code></td></tr>
+          <tr><td>Vitals</td><td><code>Observation</code></td></tr>
+          <tr><td>Consultation</td><td><code>Encounter</code> + <code>Condition</code></td></tr>
+          <tr><td>Prescription</td><td><code>MedicationRequest</code></td></tr>
+          <tr><td>Pharmacy</td><td><code>MedicationDispense</code></td></tr>
+          <tr><td>Follow-up</td><td><code>Appointment</code> + <code>CarePlan</code></td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="box sky"><h3>So the same data can leave</h3>
+          <p>Into an EPR, a lab, a pharmacy system or a national programme — without a bespoke export each time.</p></div>
+        <p class="tiny" style="margin-top:16px">That is the whole strategic point: the clinic keeps its record, and still gets to interoperate.</p>
+      </div>
+    </div>
+    <div class="foot"><span>HealthBridge</span><span>5 / 10</span></div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="kicker">Now the UK</div>
+    <h2>The same loop, mapped onto an NHS general-practice day.</h2>
+    <table>
+      <tr><th>HealthBridge step</th><th>UK equivalent</th><th>Where we add value</th></tr>
+      <tr><td>Ingest</td><td>Clinical correspondence arriving in an EMIS Web / SystmOne practice</td><td>Read the letter, propose the SNOMED CT code, route to the right clinician</td></tr>
+      <tr><td>Consultation</td><td>GP consultation → coded problem list</td><td>Structured note the practice can review, then file</td></tr>
+      <tr><td>Prescription</td><td>EPS / eRD via EMIS or SystmOne</td><td>Readable order, allergy checks visible at the point of writing</td></tr>
+      <tr><td>Pharmacy</td><td>Community pharmacy dispense</td><td>Dispense confirmed against the visit, not a paper bag</td></tr>
+      <tr><td>Follow-up</td><td>Recall, long-term-condition reviews, QOF coding</td><td>Agent nudges pending recalls before quarter end</td></tr>
+    </table>
+    <p class="tiny" style="margin-top:18px">UK terminology differs from day one: SNOMED CT instead of ICD-10-CM, NHS number instead of UHID, UK Core profiles instead of base FHIR.</p>
+    <div class="foot"><span>HealthBridge · UK framing</span><span>6 / 10</span></div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="kicker">UK adoption reality</div>
+    <h2>What selling into the NHS actually requires.</h2>
+    <div class="cols two">
+      <div class="box"><h3>Gate 1 — organisational</h3>
+        <ul class="tiny" style="font-size:14px">
+          <li>DTAC (Digital Technology Assessment Criteria) evidence pack</li>
+          <li>DSPT toolkit submission, annually renewed</li>
+          <li>UK GDPR + Data Protection Impact Assessment</li>
+          <li>Cyber Essentials / ISO 27001 expectation</li>
+        </ul>
+      </div>
+      <div class="box"><h3>Gate 2 — clinical safety</h3>
+        <ul class="tiny" style="font-size:14px">
+          <li>DCB0129 clinical risk management (manufacturer)</li>
+          <li>Hazard log, clinical safety case report, named Clinical Safety Officer</li>
+          <li>Human-in-the-loop before anything enters the record</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:20px"><span class="pill no">not claimed yet</span> &nbsp;We have none of these badges. We have the architecture that makes them answerable — tenant isolation, audit trail, no ambient data access.</p>
+    <div class="foot"><span>HealthBridge · UK framing</span><span>7 / 10</span></div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide">
+    <div class="kicker">Boundaries</div>
+    <h2>What HealthBridge does not do.</h2>
+    <div class="cols three">
+      <div class="box"><h3>Not an EPR</h3><p>It does not replace EMIS Web or SystmOne. It reads, proposes, and exports back.</p></div>
+      <div class="box"><h3>Not a diagnosis</h3><p>No autonomous clinical decision. A clinician confirms every code and every escalation.</p></div>
+      <div class="box"><h3>Not a data lake</h3><p>Nothing leaves a tenant. Each clinic's patients stay inside that clinic's boundary.</p></div>
+    </div>
+    <p class="tiny" style="margin-top:22px">Stating limits early is what makes the rest believable — and it is the first thing a UK buyer tests.</p>
+    <div class="foot"><span>HealthBridge</span><span>8 / 10</span></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide">
+    <div class="kicker">Pilot</div>
+    <h2>Thirty days, one practice, three numbers.</h2>
+    <div class="cols three">
+      <div class="box mint"><h3>Measure</h3><p>Minutes per item of correspondence, before and after.</p></div>
+      <div class="box mint"><h3>Measure</h3><p>Share of letters arriving with a proposed SNOMED CT code accepted by the clinician.</p></div>
+      <div class="box mint"><h3>Measure</h3><p>Recall list closed by day 30 that would otherwise have rolled into the next month.</p></div>
+    </div>
+    <p style="margin-top:22px">If those three do not move, the pilot failed and you owe nothing. That is the honest version of a pilot offer.</p>
+    <div class="foot"><span>HealthBridge</span><span>9 / 10</span></div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide">
+    <div class="kicker">See it</div>
+    <h2>Six screens, clickable, thirty seconds.</h2>
+    <p class="lede">19p1362.github.io/portfolio/healthbridge</p>
+    <p class="tiny" style="margin-top:6px">Interactive front end of the loop above — sample data, no live backend on that page.</p>
+    <div style="margin-top:26px">
+      <p><b>Gonela Abhilash</b> · CPC-certified coder · registered pharmacist · MSc Public Health, Anglia Ruskin</p>
+      <p class="tiny">Abhilashgonela886@gmail.com · +44 7344 796772 · linkedin.com/in/abigonela</p>
+    </div>
+    <div class="foot"><span>HealthBridge</span><span>10 / 10</span></div>
+  </section>
+
+</div>
+
+<nav>
+  <button id="prev" aria-label="Previous slide">←</button>
+  <span id="count">1 / 10</span>
+  <button id="next" aria-label="Next slide">→</button>
+</nav>
+
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide')), i=0, n=document.getElementById('count');
+  function show(k){
+    i=Math.max(0,Math.min(s.length-1,k));
+    s.forEach(function(el,j){el.classList.toggle('on',j===i);});
+    n.textContent=(i+1)+' / '+s.length;
+    if(history.replaceState)history.replaceState(null,'','#'+(i+1));
+    window.scrollTo(0,0);
+  }
+  document.getElementById('next').addEventListener('click',function(){show(i+1);});
+  document.getElementById('prev').addEventListener('click',function(){show(i-1);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(i+1);}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(i-1);}
+  });
+  var h=parseInt((location.hash||'').replace('#',''),10);
+  show(h>=1&&h<=s.length?h-1:0);
+})();
+</script>
+</body>
+</html>
