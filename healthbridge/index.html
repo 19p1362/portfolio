@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HealthBridge — the OPD loop, step by step (interactive demo)</title>
+<meta name="description" content="An interactive walk through one patient visit on HealthBridge: OPD registration → vitals → SOAP note → prescription → pharmacy dispense → follow-up. Clickable demo of the clinic workflow.">
+<style>
+  :root{
+    --ink:#101828; --muted:#5b6478; --line:#e6e9f0; --bg:#f6f8fc;
+    --violet:#6d4aff; --violet2:#9b7bff; --teal:#00b3a4; --mint:#b8f2e6;
+    --amber:#ffb020; --rose:#ff5c7a; --blue:#2f80ed; --white:#fff;
+    --shadow:0 10px 30px rgba(16,24,40,.10); --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  a{color:var(--violet);text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+  /* hero */
+  header.hero{color:#fff;padding:54px 0 64px;
+    background:radial-gradient(1200px 420px at 15% -10%,#8b6bff 0%,transparent 60%),
+               radial-gradient(900px 400px at 95% 0%,#00d6c2 0%,transparent 55%),
+               linear-gradient(160deg,#1b1040 0%,#2a1667 45%,#123a63 100%)}
+  .eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;background:rgba(255,255,255,.14);padding:7px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.25)}
+  h1{font-size:clamp(30px,5.4vw,52px);line-height:1.06;letter-spacing:-.025em;margin:16px 0 12px;font-weight:800}
+  h1 em{font-style:normal;background:linear-gradient(90deg,#b8f2e6,#ffd166);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(16px,2vw,19px);max-width:64ch;color:#e9e6ff;margin:0 0 22px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 4px;padding:0;list-style:none}
+  .chips li{font-size:13px;font-weight:650;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+    padding:7px 12px;border-radius:999px}
+
+  /* steps */
+  nav.steps{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);box-shadow:0 4px 16px rgba(16,24,40,.05)}
+  .steps ol{display:flex;gap:6px;overflow-x:auto;list-style:none;margin:0;padding:10px 20px;max-width:1040px;margin-inline:auto}
+  .steps button{white-space:nowrap;font:inherit;font-size:13.5px;font-weight:700;color:var(--muted);background:#eef1f7;
+    border:1px solid transparent;border-radius:999px;padding:9px 14px;cursor:pointer}
+  .steps button[aria-current="true"]{background:linear-gradient(120deg,var(--violet),var(--violet2));color:#fff;box-shadow:0 6px 16px rgba(109,74,255,.35)}
+  .steps button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+  main{padding:34px 0 10px;min-height:64vh}
+  section.panel{display:none;animation:in .28s ease both}
+  section.panel.on{display:block}
+  @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+  .card + .card{margin-top:16px}
+  .grid{display:grid;gap:16px}
+  @media(min-width:780px){.grid.two{grid-template-columns:1.15fr .85fr}.grid.three{grid-template-columns:repeat(3,1fr)}}
+  h2{font-size:clamp(21px,3vw,28px);letter-spacing:-.02em;margin:0 0 6px}
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0 0 10px}
+  p{margin:0 0 12px}
+  .what{color:var(--muted);max-width:70ch;margin:0 0 18px}
+
+  /* patient banner */
+  .patient{display:flex;gap:14px;align-items:center;padding:15px 17px;border-radius:14px;
+    background:linear-gradient(120deg,#eef4ff,#e9fbf7);border:1px solid #dfe9ff}
+  .avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;
+    background:linear-gradient(140deg,var(--violet),var(--teal));flex:0 0 auto}
+  .patient b{display:block;font-size:16px}
+  .patient span{font-size:13.5px;color:var(--muted)}
+
+  /* vitals */
+  .vitals{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+  @media(min-width:640px){.vitals{grid-template-columns:repeat(4,1fr)}}
+  .vital{border:1px solid var(--line);border-radius:14px;padding:13px;background:#fbfcff}
+  .vital .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .vital .v{font-size:23px;font-weight:800;letter-spacing:-.02em;margin:2px 0 6px}
+  .bar{height:7px;border-radius:99px;background:#e8edf6;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:99px}
+  .ok i{background:linear-gradient(90deg,#27c498,#7de3b6)}
+  .warn i{background:linear-gradient(90deg,#ffb020,#ffd166)}
+  .bad i{background:linear-gradient(90deg,#ff5c7a,#ff9aa9)}
+  .flag{font-size:12px;font-weight:700;margin-top:6px}
+  .flag.warn{color:#b06f00}.flag.bad{color:#c62846}.flag.ok{color:#0f9d76}
+
+  /* SOAP */
+  .soap{display:grid;gap:12px}
+  .s{border-left:5px solid var(--violet);border-radius:12px;background:#fbfcff;border:1px solid var(--line);padding:13px 15px}
+  .s.s1{border-left-color:var(--blue)}.s.s2{border-left-color:var(--teal)}
+  .s.s3{border-left-color:var(--amber)}.s.s4{border-left-color:var(--rose)}
+  .s b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px}
+
+  /* rx table */
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line)}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  tr:last-child td{border-bottom:0}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eaf7f3;color:#0f9d76}
+  .pill.amber{background:#fff4e0;color:#b06f00}
+
+  /* dispense */
+  .disp{display:grid;gap:10px}
+  .disp label{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fbfcff;cursor:pointer}
+  .disp input{width:20px;height:20px;accent-color:var(--teal);flex:0 0 auto}
+  .disp label.done{background:#effaf6;border-color:#bfe9dc}
+
+  /* timeline */
+  .tl{display:grid;gap:0;margin:0;padding:0;list-style:none}
+  .tl li{position:relative;padding:0 0 18px 34px;border-left:2px dashed #d9e0ee;margin-left:12px}
+  .tl li:last-child{border-left-color:transparent;padding-bottom:0}
+  .tl li::before{content:"";position:absolute;left:-9px;top:2px;width:16px;height:16px;border-radius:50%;
+    background:var(--white);border:3px solid var(--violet)}
+  .tl li.now::before{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 5px rgba(255,176,32,.25)}
+  .tl b{display:block;font-size:15px}
+  .tl span{font-size:13.5px;color:var(--muted)}
+
+  .navrow{display:flex;gap:10px;justify-content:space-between;margin:22px 0 0}
+  .btn{font:inherit;font-weight:750;border-radius:12px;padding:12px 18px;cursor:pointer;border:1px solid transparent}
+  .btn.primary{background:linear-gradient(120deg,var(--violet),var(--violet2));color:#fff;box-shadow:0 8px 20px rgba(109,74,255,.3)}
+  .btn.ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+  .btn:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+  .note{border-radius:14px;padding:15px 17px;background:#fffaf0;border:1px solid #ffe2b0;color:#6b4c00;font-size:14.5px;margin-top:20px}
+  .note b{color:#4a3400}
+
+  footer{padding:34px 0 60px;color:var(--muted);font-size:14px}
+  footer a{font-weight:650}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}section.panel{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">HealthBridge · interactive walkthrough</span>
+    <h1>One patient. Six screens. <em>The whole OPD loop.</em></h1>
+    <p class="lede">From the paper prescription in a patient's hand to a dispensed medicine and a scheduled follow-up — click through
+      the six steps a clinic actually runs, in the order it runs them.</p>
+    <ul class="chips">
+      <li>FHIR R4 records</li><li>DPDP 2025 ready</li><li>ABDM aligned</li>
+      <li>Multi-tenant</li><li>10 care agents</li>
+    </ul>
+  </div>
+</header>
+
+<nav class="steps" aria-label="Visit steps">
+  <ol role="tablist">
+    <li><button role="tab" aria-current="true" data-i="0">1 · Registration</button></li>
+    <li><button role="tab" aria-current="false" data-i="1">2 · Vitals</button></li>
+    <li><button role="tab" aria-current="false" data-i="2">3 · Consultation</button></li>
+    <li><button role="tab" aria-current="false" data-i="3">4 · Prescription</button></li>
+    <li><button role="tab" aria-current="false" data-i="4">5 · Pharmacy</button></li>
+    <li><button role="tab" aria-current="false" data-i="5">6 · Follow-up</button></li>
+  </ol>
+</nav>
+
+<main class="wrap">
+
+  <section class="panel on" id="p0" role="tabpanel" aria-label="Registration">
+    <h2>Registration — the queue stops holding paper</h2>
+    <p class="what">A patient arrives with nothing but a plastic bag of old prescriptions. The desk creates the record once;
+      every later step writes into the same patient timeline.</p>
+    <div class="card">
+      <div class="patient">
+        <div class="avatar" aria-hidden="true">RS</div>
+        <div>
+          <b>Ramesh S. · 54 · M</b>
+          <span>UHID HB-2026-00418 · +91 98••• ••210 · Walk-in OPD · Token 14</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid three" style="margin-top:16px">
+      <div class="card"><h3>Allergies</h3><p>Sulfonamides — rash</p></div>
+      <div class="card"><h3>Existing conditions</h3><p>Type 2 diabetes · Hypertension</p></div>
+      <div class="card"><h3>Last visit</h3><p>12 Aug 2026 · Dr K. Rao</p></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p1">
+    <h2>Vitals — nurse entry becomes a trend, not a scrap of paper</h2>
+    <p class="what">Four numbers captured in fifteen seconds. Two of them are out of range, so they are coloured, not buried.</p>
+    <div class="card">
+      <div class="vitals">
+        <div class="vital bad"><div class="k">BP</div><div class="v">152/96</div><div class="bar bad"><i style="width:86%"></i></div><div class="flag bad">High — stage 1</div></div>
+        <div class="vital warn"><div class="k">Pulse</div><div class="v">96 bpm</div><div class="bar warn"><i style="width:64%"></i></div><div class="flag warn">Upper normal</div></div>
+        <div class="vital ok"><div class="k">Temp</div><div class="v">36.9 °C</div><div class="bar ok"><i style="width:48%"></i></div><div class="flag ok">Normal</div></div>
+        <div class="vital warn"><div class="k">SpO₂</div><div class="v">96 %</div><div class="bar warn"><i style="width:71%"></i></div><div class="flag warn">Watch</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="p2">
+    <h2>Consultation — SOAP, written once</h2>
+    <p class="what">The doctor sees the vitals above instead of asking for them again. The note is structured, so it can be read by
+      a pharmacy, an insurer and a follow-up agent without re-typing.</p>
+    <div class="card soap">
+      <div class="s s1"><b>Subjective</b>"Headache for 3 days, worse in the morning. Occasional dizziness. Missed metformin twice this week."</div>
+      <div class="s s2"><b>Objective</b>BP 152/96, pulse 96, afebrile. No pedal oedema. Fundus exam deferred.</div>
+      <div class="s s3"><b>Assessment</b>Uncontrolled hypertension · Type 2 diabetes, adherence gap</div>
+      <div class="s s4"><b>Plan</b>Add amlodipine 5 mg OD · continue metformin 500 mg BD · review in 14 days · BP log daily</div>
+    </div>
+  </section>
+
+  <section class="panel" id="p3">
+    <h2>Prescription — the pharmacy gets exactly what the doctor meant</h2>
+    <p class="what">Handwriting disappears. Generics where the clinic protocol allows, brands where it doesn't.</p>
+    <div class="card">
+      <table>
+        <thead><tr><th>Medicine</th><th>Dose</th><th>Duration</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Amlodipine 5 mg</td><td>1 OD, morning</td><td>30 days</td><td><span class="pill amber">New</span></td></tr>
+          <tr><td>Metformin 500 mg</td><td>1 BD, after food</td><td>30 days</td><td><span class="pill">Continue</span></td></tr>
+          <tr><td>Paracetamol 500 mg</td><td>SOS, max 3/day</td><td>5 days</td><td><span class="pill">Symptomatic</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" id="p4">
+    <h2>Pharmacy — dispensed, and the record knows it</h2>
+    <p class="what">Tick what actually left the shelf. Two of three are in stock today; the third becomes a bring-your-own item
+      the patient is told about before leaving.</p>
+    <div class="card disp">
+      <label><input type="checkbox" checked><span><b>Amlodipine 5 mg</b> — 30 tablets dispensed · batch A2419</span></label>
+      <label><input type="checkbox" checked><span><b>Metformin 500 mg</b> — 60 tablets dispensed · batch M8821</span></label>
+      <label><input type="checkbox"><span><b>Paracetamol 500 mg</b> — out of stock · advised to buy OTC</span></label>
+    </div>
+  </section>
+
+  <section class="panel" id="p5">
+    <h2>Follow-up — scheduled before the patient reaches the door</h2>
+    <p class="what">This is where the agents take over: a reminder before the appointment, a nudge if the BP log is empty,
+      and a flag to the doctor if the numbers trend the wrong way.</p>
+    <div class="card">
+      <ul class="tl">
+        <li class="now"><b>Today</b><span>Visit closed · prescription dispensed · UHID linked</span></li>
+        <li><b>+1 day</b><span>SMS: how to measure BP at home · log first reading</span></li>
+        <li><b>+7 days</b><span>Agent checks adherence · escalates if 2 doses missed</span></li>
+        <li><b>+14 days</b><span>Review appointment · BP trend attached to the note</span></li>
+        <li><b>+30 days</b><span>Refill due · lab order if BP still > 140/90</span></li>
+      </ul>
+    </div>
+    <div class="note">
+      <b>What you are looking at:</b> a working, clickable front end of the OPD loop — the same six steps the platform's API
+      models (FHIR R4 <code>Encounter</code> → <code>Observation</code> → <code>Condition</code> → <code>MedicationRequest</code> → <code>FollowUp</code>).
+      Data here is sample data; no patient information, no backend attached to this page.
+    </div>
+  </section>
+
+  <div class="navrow">
+    <button class="btn ghost" id="prev">← Back</button>
+    <button class="btn primary" id="next">Next step →</button>
+  </div>
+
+  <footer>
+    <p><strong>HealthBridge</strong> — healthcare data orchestration and AI care agents for Indian clinics.
+      Built by Gonela Abhilash · <a href="https://19p1362.github.io/portfolio/">portfolio</a> ·
+      <a href="https://www.linkedin.com/in/abigonela">linkedin.com/in/abigonela</a></p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.steps button'));
+  var panels=[].slice.call(document.querySelectorAll('section.panel'));
+  var i=0;
+  function show(n){
+    i=Math.max(0,Math.min(panels.length-1,n));
+    panels.forEach(function(p,k){p.classList.toggle('on',k===i);});
+    tabs.forEach(function(t,k){t.setAttribute('aria-current',k===i?'true':'false');});
+    if(history.replaceState){history.replaceState(null,'','#'+(i+1));}
+    var y=document.querySelector('nav.steps').getBoundingClientRect().bottom+window.scrollY-4;
+    window.scrollTo(0,Math.max(0,y));
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(+t.dataset.i);});});
+  document.getElementById('prev').addEventListener('click',function(){show(i-1);});
+  document.getElementById('next').addEventListener('click',function(){show(i+1);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight')show(i+1);
+    if(e.key==='ArrowLeft')show(i-1);
+  });
+  [].forEach.call(document.querySelectorAll('.disp input'),function(cb){
+    cb.addEventListener('change',function(){cb.closest('label').classList.toggle('done',cb.checked);});
+  });
+  var start=parseInt((location.hash||'').replace('#',''),10);
+  if(start>=1&&start<=panels.length){show(start-1);}
+})();
+</script>
+</body>
+</html>
