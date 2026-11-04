@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>HealthBridge — presentation (16:9, template style)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#3699D5; --deep:#0875B9; --teal:#2D4146; --yellow:#FFC04D;
+    --pale:#F1F8FC; --body:#3F5963; --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#dfe7ee;font-family:"Nunito",ui-rounded,"Segoe UI",system-ui,sans-serif;color:var(--body)}
+  .slide{width:1600px;height:900px;background:var(--white);position:relative;overflow:hidden;
+    margin:26px auto;box-shadow:0 18px 50px rgba(45,65,70,.18);padding:70px 80px 78px;
+    display:flex;flex-direction:column}
+  /* soft pale-blue corner motifs */
+  .slide::before{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;
+    background:var(--pale)}
+  .slide::after{content:"";position:absolute;left:-110px;bottom:-150px;width:340px;height:340px;border-radius:50%;
+    background:var(--pale)}
+  .inner{position:relative;z-index:2;display:flex;flex-direction:column;height:100%}
+  .eyebrow{font-size:19px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--deep)}
+  h1{font-size:76px;line-height:1.02;letter-spacing:-.02em;font-weight:800;color:var(--white)}
+  h2{font-size:44px;line-height:1.12;letter-spacing:-.01em;font-weight:800;color:var(--blue);margin-bottom:18px}
+  h3{font-size:26px;font-weight:800;color:var(--deep);margin-bottom:10px}
+  p{font-size:21px;line-height:1.5}
+  .sub{font-size:26px;font-weight:700;color:#eaf6fd}
+  ul{list-style:none}
+  li{font-size:20px;line-height:1.45;margin-bottom:13px;padding-left:30px;position:relative}
+  li:before{content:"";position:absolute;left:0;top:9px;width:13px;height:13px;border-radius:4px;background:var(--yellow)}
+  .bluecard{background:var(--blue);color:#fff;border-radius:28px;padding:34px 38px}
+  .bluecard h3{color:#fff}
+  .bluecard li{color:#fff}
+  .bluecard li:before{background:var(--yellow)}
+  .pale{background:var(--pale);border-radius:28px;padding:32px 36px}
+  .deep{background:var(--deep);color:#fff;border-radius:28px;padding:34px 38px}
+  .deep h3,.deep p{color:#fff}
+  .row{display:flex;gap:34px;flex:1;min-height:0}
+  .col{flex:1;display:flex;flex-direction:column;gap:20px;min-width:0}
+  .foot{position:absolute;left:80px;right:80px;bottom:30px;display:flex;justify-content:space-between;
+    font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:#9bb0bb;z-index:2}
+  .ylw{background:var(--yellow);border-radius:50%;display:grid;place-items:center}
+  .pill-note{position:absolute;z-index:2;font-size:15px;color:#8aa0ab}
+  svg{display:block}
+  @page{size:1600px 900px;margin:0}
+  @media print{
+    html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+    .slide:last-child{page-break-after:auto}
+  }
+  body.solo{background:#2D4146}
+  body.solo .slide{display:none;margin:0}
+  body.solo .slide.on{display:flex}
+</style>
+</head>
+<body>
+
+<!-- 1 · COVER -->
+<section class="slide">
+  <div class="inner" style="justify-content:center">
+    <div style="display:flex;align-items:center;gap:56px;background:var(--blue);border-radius:40px;padding:64px 72px;position:relative">
+      <!-- illustration: bottle + capsules on a yellow circle -->
+      <svg width="330" height="330" viewBox="0 0 330 330" aria-hidden="true" style="flex:0 0 auto">
+        <circle cx="165" cy="165" r="152" fill="#FFC04D"/>
+        <rect x="112" y="96" width="96" height="146" rx="18" fill="#fff" stroke="#2D4146" stroke-width="6"/>
+        <rect x="130" y="70" width="60" height="34" rx="10" fill="#fff" stroke="#2D4146" stroke-width="6"/>
+        <rect x="124" y="140" width="72" height="34" rx="8" fill="#3699D5"/>
+        <g transform="rotate(-18 96 213)">
+          <rect x="60" y="196" width="72" height="34" rx="17" fill="#fff" stroke="#2D4146" stroke-width="6"/>
+          <path d="M96 201 L96 225" stroke="#2D4146" stroke-width="5"/>
+        </g>
+        <circle cx="242" cy="222" r="24" fill="#fff" stroke="#2D4146" stroke-width="6"/>
+        <circle cx="242" cy="222" r="9" fill="#FFC04D"/>
+        <circle cx="256" cy="140" r="16" fill="#0875B9"/>
+      </svg>
+      <div style="min-width:0">
+        <div class="eyebrow" style="color:#eaf6fd">HealthBridge · UK primary care</div>
+        <h1 style="margin:10px 0 14px">HealthBridge</h1>
+        <div class="sub">Smarter care, better service —<br>starting with the letter.</div>
+        <div style="margin-top:26px;font-size:19px;font-weight:800;color:#fff;letter-spacing:.03em">
+          19p1362.github.io/portfolio/healthbridge</div>
+      </div>
+    </div>
+    <div style="margin-top:26px;display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:19px;font-weight:700;color:var(--teal)">Gonela Abhilash · CPC · registered pharmacist · MSc Public Health, ARU</span>
+      <span style="font-size:15px;color:#8aa0ab">Independent project · concept deck · no patient data shown</span>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>1 / 6</span></div>
+</section>
+
+<!-- 2 · WHO WE ARE / WHAT DRIVES US -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow" style="margin-bottom:10px">About us</div>
+    <h2 style="margin-bottom:26px">Built for the work between the appointments</h2>
+    <div class="row">
+      <div class="col">
+        <div class="bluecard" style="flex:0 0 auto">
+          <svg width="54" height="62" viewBox="0 0 54 62" aria-hidden="true" style="margin-bottom:14px">
+            <path d="M27 4 L48 14 V34 C48 48 38 56 27 58 C16 56 6 48 6 34 V14 Z" fill="#fff" stroke="#FFC04D" stroke-width="4"/>
+            <path d="M19 30 L25 37 L36 24" stroke="#3699D5" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </svg>
+          <h3>Who we are</h3>
+          <p style="color:#fff">HealthBridge is built by Gonela Abhilash — a CPC-certified risk-adjustment coder, registered pharmacist and MSc Public Health student at Anglia Ruskin. His day job is turning clinical records into data a system can use.</p>
+        </div>
+        <div class="pale" style="flex:1">
+          <h3>The problem we start from</h3>
+          <p>A hospital writes one letter. A practice has to read it, decode it, code it and file it — often days after a clinician needed it. The letter is where care data goes missing.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="pale" style="flex:1">
+          <h3>What drives us</h3>
+          <ul>
+            <li>Fewer handoffs — one record, not six notes</li>
+            <li>Records the practice owns and can export</li>
+            <li>Change you can measure in a month, not a roadmap</li>
+          </ul>
+          <div style="margin-top:18px;display:flex;gap:14px;align-items:center">
+            <div class="ylw" style="width:64px;height:64px">
+              <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+                <path d="M17 5 L20 13 L28 13 L21.5 18 L24 26 L17 21 L10 26 L12.5 18 L6 13 L14 13 Z" fill="#2D4146"/>
+              </svg>
+            </div>
+            <p style="font-size:18px;margin:0">Stated plainly: no deployed NHS customer yet. What follows is what we build and what we would measure.</p>
+          </div>
+        </div>
+        <div class="deep" style="flex:0 0 auto">
+          <h3>Who it is for</h3>
+          <p>GP practices and primary-care networks in England, community pharmacies, and small clinics moving off paper.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>2 / 6</span></div>
+</section>
+
+<!-- 3 · WHAT WE DO / MAKING THINGS RUN BETTER -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow" style="margin-bottom:10px">Services</div>
+    <h2 style="margin-bottom:26px">What we do, and how it runs better</h2>
+    <div class="row">
+      <div class="col">
+        <h3 style="font-size:24px">What we do</h3>
+        <ul style="margin-bottom:10px">
+          <li>Read clinical correspondence — PDF or photo — and extract diagnosis, medication and action</li>
+          <li>Propose a SNOMED CT code for each fact, with the confidence shown</li>
+          <li>Require a clinician to accept, edit or reject before anything is filed</li>
+          <li>Run the visit loop: registration, vitals, consultation, prescription, pharmacy, follow-up</li>
+        </ul>
+        <div style="display:flex;gap:16px;align-items:center;margin-top:auto">
+          <div class="ylw" style="width:96px;height:96px">
+            <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+              <rect x="8" y="10" width="32" height="40" rx="5" fill="#fff" stroke="#2D4146" stroke-width="4"/>
+              <path d="M14 22 H34 M14 30 H34 M14 38 H26" stroke="#3699D5" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="42" cy="42" r="11" fill="#3699D5" stroke="#2D4146" stroke-width="3"/>
+              <path d="M37 42 L41 46 L47 38" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p style="font-size:18px;margin:0">The human stays in charge of the clinical decision. The machine does the reading.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="bluecard" style="flex:0 0 auto">
+          <h3>Making things run better</h3>
+          <ul>
+            <li>Find what slows the practice down — usually re-typing and re-reading</li>
+            <li>Remove the re-typing; keep one record per patient on the NHS number</li>
+            <li>Leave an audit trail: who read it, who coded it, who changed it</li>
+          </ul>
+        </div>
+        <div class="pale" style="flex:1;display:flex;flex-direction:column;justify-content:center">
+          <div style="display:flex;gap:18px;align-items:center">
+            <svg width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="54" fill="#FFC04D"/>
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#fff" stroke-width="0"/>
+              <path d="M60 26 A34 34 0 0 1 94 60" stroke="#0875B9" stroke-width="10" fill="none" stroke-linecap="round"/>
+              <path d="M60 94 A34 34 0 0 1 26 60" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round"/>
+              <path d="M60 46 L60 62 L72 70" stroke="#2D4146" stroke-width="6" fill="none" stroke-linecap="round"/>
+            </svg>
+            <p style="margin:0;font-size:20px"><b>Faster, not busier.</b><br>The same people, doing less re-typing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>3 / 6</span></div>
+</section>
+
+<!-- 4 · GOING DIGITAL / FOCUS CLIENTS -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow" style="margin-bottom:10px">Digital, the right way</div>
+    <h2 style="margin-bottom:24px">Paper to structured data — without breaking the practice</h2>
+    <div class="row" style="gap:24px">
+      <div class="col" style="flex:1.05">
+        <div class="bluecard" style="flex:1">
+          <h3>Going digital, the right way</h3>
+          <ul>
+            <li>Easier for patients — nothing new to learn at the desk</li>
+            <li>Simpler admin — one place a letter becomes a coded fact</li>
+            <li>Better decisions — trends and recalls that actually populate</li>
+          </ul>
+        </div>
+        <div class="pale" style="flex:0 0 auto;display:flex;gap:16px;align-items:center">
+          <svg width="88" height="88" viewBox="0 0 88 88" aria-hidden="true">
+            <circle cx="44" cy="44" r="40" fill="#fff" stroke="#3699D5" stroke-width="4"/>
+            <rect x="24" y="26" width="40" height="34" rx="5" fill="#3699D5"/>
+            <path d="M30 54 L30 62 H58 V54" stroke="#0875B9" stroke-width="4" fill="none"/>
+            <path d="M32 36 H56 M32 44 H48" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <p style="margin:0;font-size:19px">Ingest → propose → confirm → file. Four steps, one audit trail.</p>
+        </div>
+      </div>
+      <div class="col" style="flex:1">
+        <div class="deep" style="flex:1">
+          <h3>Our focus clients</h3>
+          <ul>
+            <li>GP practices with a heavy correspondence inbox</li>
+            <li>Primary-care networks and PCNs sharing admin</li>
+            <li>Community pharmacies dispensing against those prescriptions</li>
+            <li>Small clinics still running on paper registers</li>
+          </ul>
+        </div>
+        <div class="pale" style="flex:0 0 auto;display:flex;gap:14px;align-items:center">
+          <div class="ylw" style="width:52px;height:52px">
+            <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+              <rect x="4" y="11" width="22" height="8" rx="4" fill="#fff" stroke="#2D4146" stroke-width="2.5" transform="rotate(-20 15 15)"/>
+            </svg>
+          </div>
+          <p style="margin:0;font-size:19px">Start narrow: one practice, one inbox, thirty days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>4 / 6</span></div>
+</section>
+
+<!-- 5 · WHY WORK WITH US / WHAT WE MEASURE -->
+<section class="slide">
+  <div class="inner">
+    <div class="eyebrow" style="margin-bottom:10px">Why us · and what we measure</div>
+    <h2 style="margin-bottom:24px">A pilot you can judge in 30 days</h2>
+    <div class="row">
+      <div class="col">
+        <h3 style="font-size:24px">Why work with us</h3>
+        <ul>
+          <li>We understand clinical coding quality — it is the day job, not a side claim</li>
+          <li>No one-size-fits-all template; the workflow is set by the practice</li>
+          <li>Visible results: numbers a practice manager can read off one page</li>
+          <li>We listen first, then build — and we say what we cannot do</li>
+        </ul>
+      </div>
+      <div class="col" style="flex:1.15">
+        <div class="bluecard" style="flex:0 0 auto">
+          <h3>What we measure</h3>
+          <ul>
+            <li><b>Minutes per letter</b> — before versus after</li>
+            <li><b>Codes accepted</b> — share a clinician keeps unchanged</li>
+            <li><b>Recalls closed</b> — by day 30, not rolled into next month</li>
+          </ul>
+          <p style="color:#eaf6fd;font-size:19px;margin-top:16px">If those three do not move, the pilot failed and we say so.</p>
+        </div>
+        <div class="pale" style="flex:0 0 auto">
+          <p style="margin:0;font-size:19px"><b>UK deployment gates we do not hold yet:</b> DTAC · DSPT · DPIA under UK GDPR · Cyber Essentials or ISO 27001 · DCB0129 with a named Clinical Safety Officer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>5 / 6</span></div>
+</section>
+
+<!-- 6 · CLOSING -->
+<section class="slide" style="background:var(--blue)">
+  <div class="inner">
+    <div style="display:flex;gap:40px;flex:1;align-items:center">
+      <div style="flex:1.1">
+        <div style="width:96px;height:14px;border-radius:99px;background:var(--yellow);margin-bottom:30px"></div>
+        <h1 style="font-size:62px;line-height:1.06">Let's build<br>better care<br>together.</h1>
+        <p style="color:#eaf6fd;font-size:24px;margin-top:22px;max-width:22ch">One practice. One inbox. Thirty days.</p>
+        <div style="margin-top:34px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-size:22px;font-weight:800;color:#fff">Abhilashgonela886@gmail.com</span>
+          <span style="font-size:22px;font-weight:800;color:#fff">+44 7344 796772</span>
+          <span style="font-size:20px;font-weight:700;color:#eaf6fd">linkedin.com/in/abigonela</span>
+        </div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:22px">
+        <div style="background:#fff;border-radius:28px;padding:32px 34px">
+          <h3 style="color:var(--deep);font-size:24px">See the loop in 30 seconds</h3>
+          <p style="font-size:19px;margin-bottom:6px">Six clickable screens, sample data, no sign-up.</p>
+          <span style="font-size:21px;font-weight:800;color:var(--deep)">19p1362.github.io/portfolio/healthbridge</span>
+        </div>
+        <div style="background:rgba(255,255,255,.16);border-radius:28px;padding:26px 30px">
+          <p style="color:#fff;font-size:19px;margin:0">Independent project. Not affiliated with the NHS. No DTAC, DSPT or DCB0129 claim is made.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot" style="color:#cfe9f8"><span>HealthBridge</span><span>6 / 6</span></div>
+</section>
+
+<script>
+(function(){
+  var n=parseInt((location.hash||'').replace('#',''),10); if(!n)return;
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  if(s[n-1]){document.body.classList.add('solo');s[n-1].classList.add('on');}
+})();
+</script>
+</body>
+</html>
