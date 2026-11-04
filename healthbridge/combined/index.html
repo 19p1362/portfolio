@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>HealthBridge — problem &amp; solution (diagram + flowchart), one PDF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#3699D5; --deep:#0875B9; --navy:#0a2946; --navy2:#0f3a5e;
+    --yellow:#FFC04D; --pale:#F1F8FC; --ink:#14232e; --body:#33474f;
+    --ring-warm:linear-gradient(135deg,#3699D5 0%,#42b8c4 45%,#FFC04D 100%);
+    --ring-cool:linear-gradient(135deg,#FFC04D 0%,#42b8c4 50%,#3699D5 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#d7dfe6;font-family:"Nunito","Segoe UI",system-ui,sans-serif;color:var(--ink)}
+  .slide{width:1600px;height:900px;background:#fff;position:relative;overflow:hidden;
+    margin:26px auto;box-shadow:0 18px 46px rgba(11,58,99,.20);padding:62px 74px 74px;
+    display:flex;flex-direction:column}
+  .slide::before{content:"";position:absolute;inset:0;padding:9px;background:var(--ring-warm);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .slide::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;
+    border-radius:50%;background:var(--pale);pointer-events:none}
+
+  /* TYPE A — problem slides: dark navy field */
+  .slide.problem{background:linear-gradient(158deg,#0a2946 0%,#0f3a5e 58%,#0b4a72 100%);color:#fff}
+  .slide.problem::before{background:var(--ring-cool)}
+  .slide.problem::after{background:rgba(255,255,255,.06)}
+  .slide.problem h2,.slide.problem .kicker{color:#9fd8ff}
+  .slide.problem p,.slide.problem .lead{color:#dbe9f5}
+  .slide.problem .card{background:rgba(255,255,255,.10);border:2px solid rgba(255,255,255,.22)}
+  .slide.problem .card h3{color:#fff}
+  .slide.problem .card p{color:#dbe9f5}
+  .slide.problem b{color:#fff}
+
+  .inner{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;height:100%}
+  .rule{width:110px;height:11px;border-radius:99px;background:var(--yellow);margin-bottom:18px}
+  .kicker{font-size:19px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);margin-bottom:12px}
+  h1{font-size:70px;line-height:1.03;letter-spacing:-.02em;font-weight:800}
+  h2{font-size:46px;line-height:1.1;letter-spacing:-.015em;font-weight:800;color:var(--deep);margin-bottom:28px}
+  h3{font-size:25px;font-weight:800;margin-bottom:8px}
+  p{font-size:23px;line-height:1.42;color:var(--body)}
+  .lead{font-size:27px;line-height:1.36;color:var(--ink)}
+  .card{background:var(--pale);border-radius:16px;padding:24px 26px}
+  .card.line{background:#fff;border-left:9px solid var(--yellow);border-radius:10px;padding:22px 24px;box-shadow:0 2px 10px rgba(11,58,99,.06)}
+  .card.blue{background:var(--deep);color:#fff}
+  .card.blue p,.card.blue h3{color:#fff}
+  .row{display:flex;gap:20px}
+  .grow{flex:1;min-width:0}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  table{width:100%;border-collapse:collapse;font-size:23px}
+  th{text-align:left;font-size:18px;letter-spacing:.07em;text-transform:uppercase;color:var(--deep);
+     padding:0 10px 10px;border-bottom:4px solid #d9e7f2}
+  td{padding:15px 10px;border-bottom:2px solid #e6eef5;color:var(--body);line-height:1.3}
+  td:first-child{color:var(--ink);font-weight:800}
+  .num{display:inline-grid;place-items:center;width:50px;height:50px;border-radius:50%;
+       background:var(--yellow);color:var(--navy);font-size:23px;font-weight:800;margin-bottom:10px}
+  .foot{position:absolute;left:74px;right:74px;bottom:28px;display:flex;justify-content:space-between;
+    font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#7d93a3;z-index:2}
+  .slide.problem .foot{color:#8fb2ce}
+  svg{display:block}
+  @page{size:1600px 900px;margin:0}
+  @media print{
+    html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+    .slide:last-child{page-break-after:auto}
+  }
+  body.solo{background:#2D4146}
+  body.solo .slide{display:none;margin:0}
+  body.solo .slide.on{display:flex}
+</style>
+</head>
+<body>
+
+<!-- 1 · COVER -->
+<section class="slide">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:54px">
+      <svg width="290" height="290" viewBox="0 0 330 330" aria-hidden="true" style="flex:0 0 auto">
+        <circle cx="165" cy="165" r="152" fill="#FFC04D"/>
+        <rect x="112" y="96" width="96" height="150" rx="18" fill="#fff" stroke="#2D4146" stroke-width="7"/>
+        <rect x="130" y="68" width="60" height="34" rx="10" fill="#fff" stroke="#2D4146" stroke-width="7"/>
+        <rect x="124" y="142" width="72" height="36" rx="8" fill="#3699D5"/>
+        <g transform="rotate(-18 96 214)">
+          <rect x="58" y="196" width="76" height="36" rx="18" fill="#fff" stroke="#2D4146" stroke-width="7"/>
+          <path d="M96 202 L96 226" stroke="#2D4146" stroke-width="6"/>
+        </g>
+        <circle cx="244" cy="224" r="24" fill="#fff" stroke="#2D4146" stroke-width="7"/>
+        <circle cx="244" cy="224" r="9" fill="#FFC04D"/>
+      </svg>
+      <div style="min-width:0">
+        <div class="rule"></div>
+        <div class="kicker">UK healthcare · problem → solution</div>
+        <h1 style="max-width:22ch">One letter, one loop, one coded record</h1>
+        <p class="lead" style="margin-top:18px;max-width:40ch">The gap in UK care data, and the flow that closes it — with the diagrams.</p>
+      </div>
+    </div>
+    <p style="margin-top:26px;font-size:17px;color:#7d93a3">Slides 2–3: the problem (dark) · Slides 4–6: the solution (light) · Independent project, not affiliated with the NHS</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>1 / 6</span></div>
+</section>
+
+<!-- 2 · PROBLEM (TYPE A) -->
+<section class="slide problem">
+  <div class="inner">
+    <div class="kicker">The problem · 1 of 2</div>
+    <h2>Four records, one patient, no join</h2>
+    <div class="row" style="margin-bottom:26px">
+      <div class="card grow"><h3>GP practice</h3><p>Independent contractor. The lifelong record sits in EMIS Web or SystmOne.</p></div>
+      <div class="card grow"><h3>Hospital trust</h3><p>Its own electronic patient record — separate system, separate login.</p></div>
+      <div class="card grow"><h3>Pharmacy</h3><p>Its own dispensing record, often unconnected to the practice.</p></div>
+      <div class="card grow"><h3>National</h3><p>NHS number, Spine, GP Connect — plumbing, not the record.</p></div>
+    </div>
+    <p class="lead" style="max-width:74ch">So what joins them is <b>not a database</b>. It is correspondence: discharge summaries and clinic letters, arriving as documents.</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>2 / 6</span></div>
+</section>
+
+<!-- 3 · PROBLEM DIAGRAM (TYPE A) -->
+<section class="slide problem">
+  <div class="inner">
+    <div class="kicker">The problem · 2 of 2 · diagram</div>
+    <h2>A document is not a data point</h2>
+    <svg viewBox="0 0 1420 300" role="img" aria-label="Hospital record sends a letter to a practice record; a human must read and code it">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0 0 L10 5 L0 10 z" fill="#9fd8ff"/></marker></defs>
+      <g font-family="Nunito,Segoe UI,sans-serif">
+        <rect x="0" y="46" width="450" height="128" rx="16" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.30)" stroke-width="3"/>
+        <text x="26" y="100" font-size="29" font-weight="800" fill="#fff">Hospital record</text>
+        <text x="26" y="140" font-size="23" fill="#dbe9f5">admission, results, letter written</text>
+
+        <rect x="970" y="46" width="450" height="128" rx="16" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.30)" stroke-width="3"/>
+        <text x="996" y="100" font-size="29" font-weight="800" fill="#fff">Practice record</text>
+        <text x="996" y="140" font-size="23" fill="#dbe9f5">the patient history</text>
+
+        <rect x="590" y="62" width="240" height="96" rx="12" fill="#FFC04D"/>
+        <text x="628" y="106" font-size="28" font-weight="800" fill="#0a2946">letter / PDF</text>
+        <text x="628" y="136" font-size="21" fill="#0a2946">not data yet</text>
+
+        <path d="M450 110 L580 110" stroke="#9fd8ff" stroke-width="5" fill="none" marker-end="url(#ar)"/>
+        <path d="M830 110 L960 110" stroke="#9fd8ff" stroke-width="5" fill="none" marker-end="url(#ar)"/>
+        <text x="0" y="240" font-size="26" font-weight="700" fill="#ffb3bd">A person must read it and code it — until then the record does not know</text>
+      </g>
+    </svg>
+    <div class="row" style="margin-top:24px">
+      <div class="card grow"><p><b>Coding lag:</b> the fact is on paper, not in the record being searched.</p></div>
+      <div class="card grow"><p><b>Recall misses:</b> a recall queries codes; free text is invisible to it.</p></div>
+      <div class="card grow"><p><b>Duplication:</b> the same datum typed again into a second system.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>3 / 6</span></div>
+</section>
+
+<!-- 4 · SOLUTION (TYPE B) -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The solution · 1 of 3</div>
+    <h2>Close the gap with four steps</h2>
+    <div class="grid4" style="margin-bottom:24px">
+      <div class="card"><div class="num">1</div><h3>Read</h3><p>Letter or PDF in; diagnosis, medicine, action and dates out.</p></div>
+      <div class="card"><div class="num">2</div><h3>Propose</h3><p>A SNOMED CT code per fact, with a confidence — not a decision.</p></div>
+      <div class="card"><div class="num">3</div><h3>Confirm</h3><p>A clinician accepts, edits or rejects. Human, before the record.</p></div>
+      <div class="card"><div class="num">4</div><h3>File</h3><p>FHIR R4 records on the NHS number, with an audit trail.</p></div>
+    </div>
+    <div class="card blue"><p style="font-size:25px">The machine does the reading. The clinician keeps the decision. Nothing is written silently.</p></div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>4 / 6</span></div>
+</section>
+
+<!-- 5 · FLOWCHART (TYPE B) -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The solution · 2 of 3 · flowchart</div>
+    <h2>What happens to one letter</h2>
+    <svg viewBox="0 0 1440 560" role="img" aria-label="Flowchart: letter in, extract, match patient, propose code, clinician decision with accept, edit and reject branches, then FHIR write and audit">
+      <defs>
+        <marker id="f" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#0875B9"/></marker>
+        <marker id="fr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#c62846"/></marker>
+      </defs>
+      <g font-family="Nunito,Segoe UI,sans-serif" font-size="22">
+        <rect x="20" y="10" width="250" height="78" rx="14" fill="#F1F8FC" stroke="#cfe0ee" stroke-width="3"/>
+        <text x="44" y="44" font-weight="800" fill="#14232e">Letter / PDF</text>
+        <text x="44" y="72" fill="#33474f">arrives at the practice</text>
+
+        <rect x="330" y="10" width="270" height="78" rx="14" fill="#F1F8FC" stroke="#cfe0ee" stroke-width="3"/>
+        <text x="354" y="44" font-weight="800" fill="#14232e">Extract fields</text>
+        <text x="354" y="72" fill="#33474f">diagnosis, drug, dates</text>
+
+        <polygon points="775,4 900,49 775,94 650,49" fill="#FFF6E0" stroke="#f0b429" stroke-width="3"/>
+        <text x="700" y="42" font-weight="800" fill="#14232e" font-size="21">NHS</text>
+        <text x="700" y="68" font-weight="800" fill="#14232e" font-size="21">number?</text>
+
+        <rect x="1150" y="10" width="270" height="78" rx="14" fill="#FDEBED" stroke="#e8a3ad" stroke-width="3"/>
+        <text x="1174" y="44" font-weight="800" fill="#a8261f">Manual review</text>
+        <text x="1174" y="72" fill="#8a4a45">could not be matched</text>
+
+        <rect x="620" y="160" width="310" height="80" rx="14" fill="#E9F6FB" stroke="#9ecfe4" stroke-width="3"/>
+        <text x="646" y="196" font-weight="800" fill="#0b4a72">Propose SNOMED CT</text>
+        <text x="646" y="224" fill="#33474f">code + confidence</text>
+
+        <polygon points="775,286 930,346 775,406 620,346" fill="#FFF6E0" stroke="#f0b429" stroke-width="3"/>
+        <text x="676" y="338" font-weight="800" fill="#14232e" font-size="21">Clinician</text>
+        <text x="676" y="366" font-weight="800" fill="#14232e" font-size="21">confirms?</text>
+
+        <rect x="1080" y="306" width="280" height="80" rx="14" fill="#FDEBED" stroke="#e8a3ad" stroke-width="3"/>
+        <text x="1104" y="342" font-weight="800" fill="#a8261f">Manual file</text>
+        <text x="1104" y="370" fill="#8a4a45">rejected — no write</text>
+
+        <rect x="180" y="306" width="300" height="80" rx="14" fill="#E8F8EF" stroke="#9ad3b0" stroke-width="3"/>
+        <text x="204" y="342" font-weight="800" fill="#0d6b3d">Write FHIR record</text>
+        <text x="204" y="370" fill="#33474f">on the NHS number</text>
+
+        <rect x="180" y="440" width="300" height="78" rx="14" fill="#E8F8EF" stroke="#9ad3b0" stroke-width="3"/>
+        <text x="204" y="474" font-weight="800" fill="#0d6b3d">Audit log</text>
+        <text x="204" y="502" fill="#33474f">who read, coded, changed</text>
+
+        <g stroke="#0875B9" stroke-width="4" fill="none" marker-end="url(#f)">
+          <path d="M270 49 L322 49"/>
+          <path d="M600 49 L642 49"/>
+          <path d="M775 94 L775 152"/>
+          <path d="M775 240 L775 278"/>
+          <path d="M620 346 L480 346"/>
+          <path d="M330 386 L330 432"/>
+        </g>
+        <g stroke="#c62846" stroke-width="4" fill="none" marker-end="url(#fr)">
+          <path d="M900 49 L1142 49"/>
+          <path d="M930 346 L1072 346"/>
+          <path d="M862 312 C930 296 962 262 942 214" stroke-dasharray="9 8"/>
+        </g>
+        <text x="960" y="40" font-size="21" font-weight="800" fill="#c62846">no</text>
+        <text x="792" y="128" font-size="21" font-weight="800" fill="#0875B9">yes</text>
+        <text x="520" y="338" font-size="21" font-weight="800" fill="#0d6b3d">accept</text>
+        <text x="972" y="338" font-size="21" font-weight="800" fill="#c62846">reject</text>
+        <text x="905" y="190" font-size="21" font-weight="800" fill="#c62846">edit</text>
+      </g>
+    </svg>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>5 / 6</span></div>
+</section>
+
+<!-- 6 · CLOSE (TYPE B) -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The solution · 3 of 3</div>
+    <h2>Standards, limits, and where to look</h2>
+    <div class="row" style="margin-bottom:20px">
+      <div class="col grow">
+        <table>
+          <tr><th>Standard</th><th>Used for</th></tr>
+          <tr><td>NHS number</td><td>Linking the patient</td></tr>
+          <tr><td>SNOMED CT</td><td>The proposed code</td></tr>
+          <tr><td>dm+d</td><td>Medicine identity</td></tr>
+          <tr><td>FHIR R4</td><td>Records as data</td></tr>
+        </table>
+      </div>
+      <div class="grow" style="display:flex;flex-direction:column;gap:14px">
+        <div class="card line"><p><b>No autonomous diagnosis.</b> A clinician confirms every code.</p></div>
+        <div class="card line"><p><b>No shared pool.</b> One practice cannot see another's patients.</p></div>
+        <div class="card line"><p><b>No compliance claim.</b> DTAC, DSPT and DCB0129 come first.</p></div>
+      </div>
+    </div>
+    <div class="card blue">
+      <p style="font-size:24px;margin-bottom:10px"><b>See the loop in 30 seconds</b> — six clickable screens, sample data.</p>
+      <p style="font-size:27px;font-weight:800">19p1362.github.io/portfolio/healthbridge</p>
+    </div>
+    <p style="margin-top:18px;font-size:17px;color:#7d93a3">Gonela Abhilash · CPC · registered pharmacist · MSc Public Health, ARU — independent project, not affiliated with the NHS.</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>6 / 6</span></div>
+</section>
+
+<script>
+(function(){
+  var n=parseInt((location.hash||'').replace('#',''),10); if(!n)return;
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  if(s[n-1]){document.body.classList.add('solo');s[n-1].classList.add('on');}
+})();
+</script>
+</body>
+</html>
