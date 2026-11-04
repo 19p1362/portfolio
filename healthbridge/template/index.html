@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>HealthBridge — UK problem &amp; solution (16:9)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#3699D5; --deep:#0875B9; --navy:#0b3a63; --teal:#2D4146;
+    --yellow:#FFC04D; --pale:#F1F8FC; --ink:#14232e; --body:#33474f;
+    --ring:linear-gradient(135deg,#3699D5 0%,#42b8c4 45%,#FFC04D 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#d7dfe6;font-family:"Nunito","Segoe UI",system-ui,sans-serif;color:var(--ink)}
+  .slide{width:1600px;height:900px;background:#fff;position:relative;overflow:hidden;
+    margin:26px auto;box-shadow:0 18px 46px rgba(11,58,99,.20);padding:64px 76px 76px;
+    display:flex;flex-direction:column}
+  /* decorative frame */
+  .slide::before{content:"";position:absolute;inset:0;padding:9px;background:var(--ring);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .slide::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;
+    border-radius:50%;background:var(--pale);pointer-events:none}
+  .inner{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;height:100%}
+  .rule{width:110px;height:11px;border-radius:99px;background:var(--yellow);margin-bottom:20px}
+  .kicker{font-size:19px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);margin-bottom:12px}
+  h1{font-size:70px;line-height:1.03;letter-spacing:-.02em;font-weight:800}
+  h2{font-size:46px;line-height:1.1;letter-spacing:-.015em;font-weight:800;color:var(--deep);margin-bottom:30px}
+  h3{font-size:26px;font-weight:800;margin-bottom:8px}
+  p{font-size:23px;line-height:1.42;color:var(--body)}
+  .lead{font-size:27px;line-height:1.36;color:var(--ink)}
+  .card{background:var(--pale);border-radius:16px;padding:26px 28px}
+  .card.blue{background:var(--deep);color:#fff}
+  .card.blue h3,.card.blue p{color:#fff}
+  .card.line{background:#fff;border-left:9px solid var(--yellow);border-radius:10px;padding:24px 26px;box-shadow:0 2px 10px rgba(11,58,99,.06)}
+  .row{display:flex;gap:22px}
+  .grow{flex:1;min-width:0}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .stat{background:#fff;border:3px solid #d9e7f2;border-radius:16px;padding:10px 16px;display:inline-block;
+        font-size:19px;font-weight:800;color:var(--deep);letter-spacing:.04em}
+  table{width:100%;border-collapse:collapse;font-size:24px}
+  th{text-align:left;font-size:18px;letter-spacing:.07em;text-transform:uppercase;color:var(--deep);
+     padding:0 10px 10px;border-bottom:4px solid #d9e7f2}
+  td{padding:16px 10px;border-bottom:2px solid #e6eef5;color:var(--body);line-height:1.3}
+  td:first-child{color:var(--ink);font-weight:800}
+  .num{display:inline-grid;place-items:center;width:54px;height:54px;border-radius:50%;
+       background:var(--yellow);color:var(--teal);font-size:25px;font-weight:800;margin-bottom:12px}
+  .foot{position:absolute;left:76px;right:76px;bottom:30px;display:flex;justify-content:space-between;
+    font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#7d93a3;z-index:2}
+  svg{display:block}
+  @page{size:1600px 900px;margin:0}
+  @media print{
+    html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+    .slide:last-child{page-break-after:auto}
+  }
+  body.solo{background:#2D4146}
+  body.solo .slide{display:none;margin:0}
+  body.solo .slide.on{display:flex}
+</style>
+</head>
+<body>
+
+<!-- 1 · COVER -->
+<section class="slide">
+  <div class="inner">
+    <div style="display:flex;align-items:center;gap:56px">
+      <svg width="300" height="300" viewBox="0 0 330 330" aria-hidden="true" style="flex:0 0 auto">
+        <circle cx="165" cy="165" r="152" fill="#FFC04D"/>
+        <rect x="112" y="96" width="96" height="150" rx="18" fill="#fff" stroke="#2D4146" stroke-width="7"/>
+        <rect x="130" y="68" width="60" height="34" rx="10" fill="#fff" stroke="#2D4146" stroke-width="7"/>
+        <rect x="124" y="142" width="72" height="36" rx="8" fill="#3699D5"/>
+        <g transform="rotate(-18 96 214)">
+          <rect x="58" y="196" width="76" height="36" rx="18" fill="#fff" stroke="#2D4146" stroke-width="7"/>
+          <path d="M96 202 L96 226" stroke="#2D4146" stroke-width="6"/>
+        </g>
+        <circle cx="244" cy="224" r="24" fill="#fff" stroke="#2D4146" stroke-width="7"/>
+        <circle cx="244" cy="224" r="9" fill="#FFC04D"/>
+      </svg>
+      <div style="min-width:0">
+        <div class="rule"></div>
+        <div class="kicker">UK healthcare · an explainer</div>
+        <h1 style="max-width:20ch">From paper letters to coded records</h1>
+        <p class="lead" style="margin-top:20px;max-width:34ch">What breaks in UK care data, and what HealthBridge does about it.</p>
+        <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap">
+          <span class="stat">FHIR R4</span><span class="stat">SNOMED CT</span><span class="stat">NHS number</span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:30px;font-size:17px;color:#7d93a3">Independent project · no patient data · not affiliated with the NHS</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>1 / 6</span></div>
+</section>
+
+<!-- 2 · PROBLEM 1 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The problem · 1 of 3</div>
+    <h2>Four records, four owners</h2>
+    <div class="grid4">
+      <div class="card"><h3>GP practice</h3><p>Independent contractors. The lifelong record lives in EMIS Web or SystmOne.</p></div>
+      <div class="card"><h3>Hospital trust</h3><p>Its own electronic patient record, separate system and login.</p></div>
+      <div class="card"><h3>Pharmacy</h3><p>Its own dispensing record, often unconnected to the practice.</p></div>
+      <div class="card"><h3>National</h3><p>NHS number, Spine and GP Connect — plumbing, not the record.</p></div>
+    </div>
+    <p class="lead" style="margin-top:34px;max-width:70ch">So there is no single patient record. There are several — and the thing joining them is not a database.</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>2 / 6</span></div>
+</section>
+
+<!-- 3 · PROBLEM 2 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The problem · 2 of 3</div>
+    <h2>The join is a letter</h2>
+    <svg viewBox="0 0 1400 300" role="img" aria-label="A hospital record sends a letter document to a practice record; a human must read it first">
+      <g font-family="Nunito,Segoe UI,sans-serif">
+        <rect x="0" y="40" width="470" height="130" rx="16" fill="#F1F8FC" stroke="#cfe0ee" stroke-width="3"/>
+        <text x="28" y="94" font-size="30" font-weight="800" fill="#14232e">Hospital record</text>
+        <text x="28" y="136" font-size="24" fill="#33474f">the admission and its results</text>
+
+        <rect x="930" y="40" width="470" height="130" rx="16" fill="#F1F8FC" stroke="#cfe0ee" stroke-width="3"/>
+        <text x="958" y="94" font-size="30" font-weight="800" fill="#14232e">Practice record</text>
+        <text x="958" y="136" font-size="24" fill="#33474f">the patient history</text>
+
+        <rect x="570" y="58" width="260" height="94" rx="12" fill="#FFC04D" stroke="#2D4146" stroke-width="4"/>
+        <text x="612" y="104" font-size="30" font-weight="800" fill="#2D4146">letter / PDF</text>
+        <text x="612" y="134" font-size="22" fill="#2D4146">not data yet</text>
+
+        <path d="M470 105 L560 105" stroke="#0875B9" stroke-width="5" fill="none" marker-end="url(#b)"/>
+        <path d="M840 105 L920 105" stroke="#0875B9" stroke-width="5" fill="none" marker-end="url(#b)"/>
+        <text x="352" y="250" font-size="26" font-weight="700" fill="#a8261f">someone must read it and code it before the record knows</text>
+      </g>
+      <defs><marker id="b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0 0 L10 5 L0 10 z" fill="#0875B9"/></marker></defs>
+    </svg>
+    <div class="row" style="margin-top:26px">
+      <div class="card line grow"><p><b>Coding lag</b> — the fact exists on paper, not in the record being searched.</p></div>
+      <div class="card line grow"><p><b>Recall misses</b> — a recall queries by code; free text is invisible.</p></div>
+      <div class="card line grow"><p><b>Duplication</b> — the same datum typed again into a second system.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>3 / 6</span></div>
+</section>
+
+<!-- 4 · SOLUTION 1 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The solution · 1 of 3</div>
+    <h2>Fix the manual middle</h2>
+    <div class="grid4" style="margin-bottom:26px">
+      <div class="card"><div class="num">1</div><h3>Read</h3><p>Letter or PDF in; diagnosis, medicine, action and dates out.</p></div>
+      <div class="card"><div class="num">2</div><h3>Propose</h3><p>A SNOMED CT code per fact, with a confidence — not a decision.</p></div>
+      <div class="card"><div class="num">3</div><h3>Confirm</h3><p>A clinician accepts, edits or rejects. Human, before the record.</p></div>
+      <div class="card"><div class="num">4</div><h3>File</h3><p>FHIR R4 records on the NHS number, with an audit trail.</p></div>
+    </div>
+    <div class="card blue">
+      <p style="font-size:26px">The machine does the reading. The clinician keeps the decision. Nothing is written silently.</p>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>4 / 6</span></div>
+</section>
+
+<!-- 5 · SOLUTION 2 -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The solution · 2 of 3</div>
+    <h2>Built on the standards already in use</h2>
+    <table>
+      <tr><th>Standard</th><th>What HealthBridge does with it</th></tr>
+      <tr><td>NHS number</td><td>Links every record to the right person, not a typed name</td></tr>
+      <tr><td>SNOMED CT</td><td>The proposed clinical code (SCCI0034 terminology)</td></tr>
+      <tr><td>dm+d</td><td>One medicine, one code, from prescribing to dispensing</td></tr>
+      <tr><td>FHIR R4</td><td>Records written and read back as data, not documents</td></tr>
+    </table>
+    <div class="row" style="margin-top:26px">
+      <div class="card line grow"><p><b>Tenant isolation</b> — one practice cannot see another's patients.</p></div>
+      <div class="card line grow"><p><b>Full audit trail</b> — who read it, who coded it, who changed it.</p></div>
+      <div class="card line grow"><p><b>Interoperation</b> — the practice keeps its own record system.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>5 / 6</span></div>
+</section>
+
+<!-- 6 · CLOSING -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The solution · 3 of 3</div>
+    <h2>What it will not do — and an honest limit</h2>
+    <div class="grid4" style="margin-bottom:24px">
+      <div class="card"><h3>No diagnosis</h3><p>No autonomous clinical decision, ever.</p></div>
+      <div class="card"><h3>No shared pool</h3><p>No cross-practice patient data.</p></div>
+      <div class="card"><h3>No silent writes</h3><p>Every filed fact is attributable.</p></div>
+      <div class="card"><h3>No claims</h3><p>No UK certification held today.</p></div>
+    </div>
+    <div class="card blue">
+      <p style="font-size:24px;margin-bottom:14px"><b>See it in 30 seconds</b> — six clickable screens, sample data, no sign-up.</p>
+      <p style="font-size:28px;font-weight:800">19p1362.github.io/portfolio/healthbridge</p>
+    </div>
+    <p style="margin-top:22px;font-size:18px;color:#7d93a3">Gonela Abhilash · CPC · registered pharmacist · MSc Public Health, ARU — independent project, not affiliated with the NHS. DTAC, DSPT and DCB0129 are what a UK deployment would require first.</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>6 / 6</span></div>
+</section>
+
+<script>
+(function(){
+  var n=parseInt((location.hash||'').replace('#',''),10); if(!n)return;
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  if(s[n-1]){document.body.classList.add('solo');s[n-1].classList.add('on');}
+})();
+</script>
+</body>
+</html>
