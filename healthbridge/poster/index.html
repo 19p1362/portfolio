@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>HealthBridge — UK problem → solution (1080×1350)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d1621; --ink2:#33414f; --blue:#0b4f8a; --pale:#e8f1f9;
+    --yellow:#f0b429; --line:#c9d6e2; --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#dde3e9;font-family:"Nunito","Segoe UI",system-ui,sans-serif;color:var(--ink)}
+  .slide{width:1080px;height:1350px;background:var(--white);position:relative;overflow:hidden;
+    margin:24px auto;padding:88px 76px 96px;display:flex;flex-direction:column;
+    box-shadow:0 14px 40px rgba(13,22,33,.18)}
+  .inner{display:flex;flex-direction:column;justify-content:center;height:100%;position:relative;z-index:2}
+  .bar{width:110px;height:12px;background:var(--yellow);border-radius:99px;margin-bottom:26px}
+  .kicker{font-size:22px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+  h1{font-size:70px;line-height:1.05;letter-spacing:-.02em;font-weight:800}
+  h2{font-size:58px;line-height:1.08;letter-spacing:-.015em;font-weight:800;color:var(--blue);margin-bottom:30px}
+  h3{font-size:32px;font-weight:800;margin-bottom:10px}
+  p{font-size:32px;line-height:1.42;color:var(--ink2)}
+  .lead{font-size:35px;line-height:1.36;color:var(--ink)}
+  ul{list-style:none}
+  li{font-size:31px;line-height:1.36;margin-bottom:20px;padding-left:38px;position:relative;color:var(--ink2)}
+  li:before{content:"";position:absolute;left:0;top:14px;width:16px;height:16px;border-radius:4px;background:var(--yellow)}
+  b,strong{color:var(--ink)}
+  .card{background:var(--pale);border-radius:16px;padding:30px 34px}
+  .card.white{background:#fff;border:3px solid var(--line)}
+  .card.line{background:#fff;border-left:10px solid var(--yellow);border-radius:10px;padding:28px 32px}
+  .row{display:flex;gap:22px}
+  .col{flex:1;display:flex;flex-direction:column;gap:20px;min-width:0}
+  .foot{position:absolute;left:76px;right:76px;bottom:38px;display:flex;justify-content:space-between;
+    font-size:19px;letter-spacing:.1em;text-transform:uppercase;color:#6b7c8c;z-index:2}
+  table{width:100%;border-collapse:collapse;font-size:29px}
+  th{text-align:left;font-size:21px;letter-spacing:.07em;text-transform:uppercase;color:var(--blue);
+     padding:0 10px 12px;border-bottom:4px solid var(--line)}
+  td{padding:18px 10px;border-bottom:2px solid var(--line);color:var(--ink2);vertical-align:top;line-height:1.3}
+  td:first-child{color:var(--ink);font-weight:800}
+  svg{display:block;width:100%;height:auto}
+  .num{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;
+       background:var(--blue);color:#fff;font-size:26px;font-weight:800;margin-right:14px}
+  @page{size:1080px 1350px;margin:0}
+  @media print{
+    html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+    .slide:last-child{page-break-after:auto}
+  }
+  body.solo{background:#33414f}
+  body.solo .slide{display:none;margin:0}
+  body.solo .slide.on{display:flex}
+</style>
+</head>
+<body>
+
+<!-- 1 · PROBLEM COVER -->
+<section class="slide">
+  <div class="inner">
+    <div class="bar"></div>
+    <div class="kicker">The problem · 1 of 2 parts</div>
+    <h1>The UK doesn't have<br>one patient record.</h1>
+    <p class="lead" style="margin-top:28px">It has several — and the thing joining them is not a database.<br>It's <b>letters</b>.</p>
+    <div style="margin-top:44px;display:flex;gap:14px;align-items:center">
+      <span style="font-size:26px;font-weight:800;color:var(--blue)">Swipe →</span>
+      <span style="font-size:24px;color:#6b7c8c">the problem, then what can be done about it</span>
+    </div>
+  </div>
+  <div class="foot"><span>UK healthcare explainer</span><span>1 / 10</span></div>
+</section>
+
+<!-- 2 · WHO HOLDS WHAT -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The problem · structure</div>
+    <h2>Four records, four owners</h2>
+    <div class="col">
+      <div class="card"><h3>GP practice</h3><p>Independent contractors, not NHS-owned. The lifelong record sits in EMIS Web or SystmOne.</p></div>
+      <div class="card"><h3>Hospital trust</h3><p>Runs its own electronic patient record. Separate system, separate login.</p></div>
+      <div class="card"><h3>Pharmacy &amp; community</h3><p>Their own dispensing and care records, often with no direct link to the practice.</p></div>
+      <div class="card"><h3>National services</h3><p>NHS number, Spine, GP Connect, e-RS — the shared plumbing, not the record itself.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>UK healthcare explainer</span><span>2 / 10</span></div>
+</section>
+
+<!-- 3 · THE JOIN IS A LETTER -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The problem · the join</div>
+    <h2>So what connects them?</h2>
+    <p class="lead" style="margin-bottom:30px">Discharge summaries and clinic letters, arriving as documents. A PDF is not a database row.</p>
+    <svg viewBox="0 0 900 300" role="img" aria-label="Hospital record sends a letter document to a practice record">
+      <g font-family="Nunito,Segoe UI,sans-serif" font-size="28">
+        <rect x="0" y="20" width="330" height="110" rx="14" fill="#e8f1f9"/>
+        <text x="24" y="64" font-weight="800" fill="#0d1621">Hospital EPR</text>
+        <text x="24" y="102" fill="#33414f" font-size="24">the admission</text>
+
+        <rect x="470" y="20" width="330" height="110" rx="14" fill="#e8f1f9"/>
+        <text x="494" y="64" font-weight="800" fill="#0d1621">Practice record</text>
+        <text x="494" y="102" fill="#33414f" font-size="24">the patient history</text>
+
+        <rect x="345" y="160" width="110" height="80" rx="10" fill="#fdf0d0" stroke="#f0b429" stroke-width="4"/>
+        <text x="368" y="208" font-weight="800" fill="#0d1621" font-size="26">letter</text>
+
+        <path d="M165 130 L165 175 L340 175" stroke="#0b4f8a" stroke-width="4" fill="none"/>
+        <path d="M460 175 L630 175 L630 135" stroke="#0b4f8a" stroke-width="4" fill="none"/>
+        <circle cx="165" cy="175" r="7" fill="#0b4f8a"/><circle cx="630" cy="175" r="7" fill="#0b4f8a"/>
+        <text x="150" y="278" font-size="24" fill="#a8261f" font-weight="700">a human must read it before it counts</text>
+      </g>
+    </svg>
+    <p style="margin-top:22px">The practice doesn't receive data. It receives <b>a document about data</b>.</p>
+  </div>
+  <div class="foot"><span>UK healthcare explainer</span><span>3 / 10</span></div>
+</section>
+
+<!-- 4 · THE MANUAL MIDDLE -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The problem · the manual step</div>
+    <h2>Two of six steps are done by hand</h2>
+    <svg viewBox="0 0 900 560" role="img" aria-label="Six steps of a letter's journey, with reading/coding and filing marked as manual">
+      <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0 0 L10 5 L0 10 z" fill="#0b4f8a"/></marker></defs>
+      <g font-family="Nunito,Segoe UI,sans-serif" font-size="27">
+        <rect x="0" y="0" width="430" height="104" rx="14" fill="#e8f1f9"/>
+        <text x="22" y="44" font-weight="800" fill="#0d1621">1 · Arrives</text>
+        <text x="22" y="82" fill="#33414f" font-size="23">post or electronic</text>
+        <rect x="470" y="0" width="430" height="104" rx="14" fill="#e8f1f9"/>
+        <text x="492" y="44" font-weight="800" fill="#0d1621">2 · Filed as a doc</text>
+        <text x="492" y="82" fill="#33414f" font-size="23">readable by people</text>
+
+        <rect x="470" y="160" width="430" height="104" rx="14" fill="#fdf0d0" stroke="#f0b429" stroke-width="4"/>
+        <text x="492" y="204" font-weight="800" fill="#0d1621">3 · Read &amp; coded ✋</text>
+        <text x="492" y="242" fill="#33414f" font-size="23">a person decides</text>
+        <rect x="0" y="160" width="430" height="104" rx="14" fill="#fdf0d0" stroke="#f0b429" stroke-width="4"/>
+        <text x="22" y="204" font-weight="800" fill="#0d1621">4 · Filed to record ✋</text>
+        <text x="22" y="242" fill="#33414f" font-size="23">if it gets done</text>
+
+        <rect x="0" y="320" width="430" height="104" rx="14" fill="#e8f1f9"/>
+        <text x="22" y="364" font-weight="800" fill="#0d1621">5 · Recall depends</text>
+        <text x="22" y="402" fill="#33414f" font-size="23">no code, no recall</text>
+        <rect x="470" y="320" width="430" height="104" rx="14" fill="#e8f1f9"/>
+        <text x="492" y="364" font-weight="800" fill="#0d1621">6 · Clinician acts</text>
+        <text x="492" y="402" fill="#33414f" font-size="23">days or weeks later</text>
+
+        <g stroke="#0b4f8a" stroke-width="4" fill="none" marker-end="url(#a)">
+          <path d="M430 52 L462 52"/><path d="M685 104 L685 152"/>
+          <path d="M470 212 L438 212"/><path d="M215 264 L215 312"/>
+          <path d="M430 372 L462 372"/>
+        </g>
+        <text x="0" y="490" font-size="26" fill="#0d1621" font-weight="700">Steps 3 and 4 are the gap. The letter has arrived —</text>
+        <text x="0" y="528" font-size="26" fill="#0d1621" font-weight="700">the information has not.</text>
+      </g>
+    </svg>
+  </div>
+  <div class="foot"><span>UK healthcare explainer</span><span>4 / 10</span></div>
+</section>
+
+<!-- 5 · WHAT IT COSTS -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The problem · the consequences</div>
+    <h2>What the gap produces</h2>
+    <ul>
+      <li><b>Re-reading</b> — read once to understand it, again if it was coded wrong.</li>
+      <li><b>Coding lag</b> — the fact exists on paper but not in the record being searched.</li>
+      <li><b>Recall misses</b> — a recall query pulls by code; free text is invisible to it.</li>
+      <li><b>Duplication</b> — the same datum typed into a second system, because they can't talk.</li>
+      <li><b>Delay</b> — a result in an inbox is clinically the same as one that never arrived.</li>
+    </ul>
+  </div>
+  <div class="foot"><span>UK healthcare explainer</span><span>5 / 10</span></div>
+</section>
+
+<!-- 6 · SOLUTION COVER -->
+<section class="slide">
+  <div class="inner">
+    <div class="bar"></div>
+    <div class="kicker">The solution · 2 of 2 parts</div>
+    <h1 style="color:var(--blue)">Fix the manual<br>middle.</h1>
+    <p class="lead" style="margin-top:28px">Not another record system. A way to turn the document into a <b>coded, confirmed fact</b> — with the clinician still holding the decision.</p>
+    <p style="margin-top:34px;font-size:28px">This is what <b>HealthBridge</b> does.</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>6 / 10</span></div>
+</section>
+
+<!-- 7 · FOUR STEPS -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The solution · how it works</div>
+    <h2>Four steps, one of them human</h2>
+    <div class="col">
+      <div class="card line"><h3>1 · Read</h3><p>Take the letter or PDF. Extract the diagnosis, the medicine, the action, the dates.</p></div>
+      <div class="card line"><h3>2 · Propose</h3><p>Suggest a SNOMED CT code for each fact, with a confidence — not a decision.</p></div>
+      <div class="card line"><h3>3 · Confirm <span style="color:var(--blue)">(clinician)</span></h3><p>Accept, edit or reject. Nothing enters the record before this step.</p></div>
+      <div class="card line"><h3>4 · File &amp; export</h3><p>Write FHIR R4 records on the NHS number, with an audit trail of who did what.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>7 / 10</span></div>
+</section>
+
+<!-- 8 · STANDARDS -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The solution · what it speaks</div>
+    <h2>Built on the standards already in use</h2>
+    <table>
+      <tr><th>Standard</th><th>HealthBridge use</th></tr>
+      <tr><td>NHS number</td><td>Links every record to the right person</td></tr>
+      <tr><td>SNOMED CT</td><td>The proposed clinical code, SCCI0034 terminology</td></tr>
+      <tr><td>dm+d</td><td>One medicine, one code, prescribing to dispensing</td></tr>
+      <tr><td>FHIR R4</td><td>Records written and read back as data, not documents</td></tr>
+      <tr><td>Audit log</td><td>Who read it, who coded it, who changed it</td></tr>
+    </table>
+    <p style="margin-top:26px;font-size:29px">Interoperation, not replacement — the practice keeps its own record.</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>8 / 10</span></div>
+</section>
+
+<!-- 9 · HONEST -->
+<section class="slide">
+  <div class="inner">
+    <div class="kicker">The solution · what it will not do</div>
+    <h2>Three refusals</h2>
+    <ul style="margin-bottom:26px">
+      <li><b>No autonomous diagnosis.</b> The model reads; a clinician decides.</li>
+      <li><b>No shared patient pool.</b> One practice cannot see another's patients.</li>
+      <li><b>No silent writes.</b> Every filed fact is attributable and reversible.</li>
+    </ul>
+    <div class="card white">
+      <p style="font-size:29px;color:var(--ink)"><b>And an honest limit:</b> HealthBridge holds <b>no UK certifications yet</b> — DTAC, DSPT, DCB0129 and a DPIA are what a UK deployment would require, and slide-level claims don't substitute for them.</p>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>9 / 10</span></div>
+</section>
+
+<!-- 10 · CTA -->
+<section class="slide">
+  <div class="inner">
+    <div class="bar"></div>
+    <div class="kicker">See it</div>
+    <h1 style="font-size:64px">Six screens,<br>thirty seconds.</h1>
+    <p class="lead" style="margin-top:26px">The clinic loop, clickable — registration, vitals, consultation, prescription, pharmacy, follow-up. Sample data, no sign-up.</p>
+    <div class="card" style="margin-top:34px">
+      <p style="font-size:30px;font-weight:800;color:var(--blue)">19p1362.github.io/portfolio/healthbridge</p>
+    </div>
+    <p style="margin-top:30px;font-size:26px">Gonela Abhilash · CPC · registered pharmacist · MSc Public Health, ARU</p>
+    <p style="margin-top:10px;font-size:24px;color:#6b7c8c">Independent project. Not affiliated with the NHS. No compliance claim is made.</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>10 / 10</span></div>
+</section>
+
+<script>
+(function(){
+  var n=parseInt((location.hash||'').replace('#',''),10); if(!n)return;
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  if(s[n-1]){document.body.classList.add('solo');s[n-1].classList.add('on');}
+})();
+</script>
+</body>
+</html>
