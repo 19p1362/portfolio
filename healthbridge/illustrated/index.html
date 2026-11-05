@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>HealthBridge — UK problem &amp; solution (editorial + per-slide artwork)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1116; --fg:#f2f4f7; --dim:#9aa6b2; --acid:#c8ff4d; --amber:#ffc04d;
+    --red:#ff7a8a; --hair:rgba(255,255,255,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#05070a;font-family:"Space Grotesk","Segoe UI",system-ui,sans-serif;color:var(--fg)}
+  .slide{width:1080px;height:1350px;background:var(--bg);position:relative;overflow:hidden;
+    margin:22px auto;padding:78px 68px 94px;display:flex;flex-direction:column;
+    box-shadow:0 0 0 1px var(--hair), 0 20px 60px rgba(0,0,0,.5)}
+  .slide.light{background:#f4f2ec;color:#0e1116}
+  .slide.light .dim,.slide.light .lbl{color:#6b7480}
+  .inner{display:flex;flex-direction:column;justify-content:center;height:100%;position:relative;z-index:2}
+  .lbl{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:16px;letter-spacing:.22em;
+       text-transform:uppercase;color:var(--dim)}
+  .topbar{position:absolute;left:68px;right:68px;top:42px;display:flex;justify-content:space-between;
+       align-items:center;z-index:3}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--acid);display:inline-block;margin-right:10px}
+  h1{font-size:66px;line-height:1.03;letter-spacing:-.03em;font-weight:700}
+  h2{font-size:48px;line-height:1.06;letter-spacing:-.02em;font-weight:700;margin-bottom:22px}
+  p{font-size:26px;line-height:1.4;color:#cdd5de}
+  .light p{color:#3b434c}
+  .lead{font-size:30px;line-height:1.34;color:var(--fg)}
+  .light .lead{color:#0e1116}
+  .accent{color:var(--acid)}
+  .split{display:flex;gap:28px;align-items:center}
+  .txt{flex:1.05;min-width:0}
+  .art{flex:.95;min-width:0}
+  .art svg{width:100%;height:auto;display:block}
+  .rule{height:1px;background:var(--hair);margin:24px 0}
+  ul{list-style:none}
+  li{font-size:25px;line-height:1.34;margin-bottom:16px;padding-left:32px;position:relative;color:#cdd5de}
+  .light li{color:#3b434c}
+  li:before{content:"";position:absolute;left:0;top:13px;width:14px;height:2px;background:var(--acid)}
+  .light li:before{background:#3c6b00}
+  b,strong{color:var(--fg)} .light b{color:#0e1116}
+  .big-num{font-size:132px;line-height:.9;letter-spacing:-.05em;font-weight:700;color:var(--acid)}
+  table{width:100%;border-collapse:collapse;font-size:23px}
+  th{text-align:left;font-family:ui-monospace,Menlo,monospace;font-size:15px;letter-spacing:.16em;
+     text-transform:uppercase;color:var(--dim);padding:0 8px 10px;border-bottom:1px solid var(--hair)}
+  td{padding:14px 8px;border-bottom:1px solid var(--hair);color:#cdd5de;line-height:1.25}
+  .light td{color:#3b434c}
+  td:first-child{color:var(--fg);font-weight:700} .light td:first-child{color:#0e1116}
+  .foot{position:absolute;left:68px;right:68px;bottom:40px;display:flex;justify-content:space-between;
+    font-family:ui-monospace,Menlo,monospace;font-size:15px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase}
+  .chip{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:14px;letter-spacing:.13em;
+    text-transform:uppercase;padding:6px 11px;border:1px solid var(--hair);color:var(--dim);margin:0 7px 7px 0}
+  @page{size:1080px 1350px;margin:0}
+  @media print{html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+    .slide:last-child{page-break-after:auto}}
+  body.solo{background:#000}
+  body.solo .slide{display:none;margin:0}
+  body.solo .slide.on{display:flex}
+</style>
+</head>
+<body>
+
+<!-- 1 · COVER · art: an envelope carrying a record -->
+<section class="slide">
+  <div class="topbar"><span class="lbl"><i class="dot"></i>HealthBridge / UK</span><span class="lbl">01 — 10</span></div>
+  <div class="inner">
+    <h1 style="margin-bottom:22px">The record<br>arrives as<br><span class="accent">a letter.</span></h1>
+    <div class="split" style="margin-top:8px">
+      <div class="txt">
+        <p class="lead" style="max-width:24ch">Five slides on what breaks in UK care data. Five on the build that closes it.</p>
+        <div style="margin-top:24px">
+          <span class="chip">FHIR R4</span><span class="chip">SNOMED CT</span><span class="chip">NHS number</span>
+        </div>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 400 330" role="img" aria-label="An envelope carrying a patient record">
+          <g stroke="#c8ff4d" stroke-width="3" fill="none">
+            <rect x="30" y="90" width="300" height="200" rx="4"/>
+            <path d="M30 90 L180 200 L330 90"/>
+          </g>
+          <g fill="#f2f4f7">
+            <rect x="80" y="150" width="200" height="14" opacity=".9"/>
+            <rect x="80" y="176" width="150" height="14" opacity=".55"/>
+            <rect x="80" y="202" width="176" height="14" opacity=".35"/>
+          </g>
+          <g fill="#0e1116" stroke="#c8ff4d" stroke-width="3">
+            <rect x="250" y="40" width="120" height="52"/>
+          </g>
+          <text x="266" y="74" font-size="24" font-family="ui-monospace,Menlo,monospace" fill="#c8ff4d">FHIR</text>
+          <path d="M250 92 L310 92" stroke="#ff7a8a" stroke-width="3" stroke-dasharray="7 6"/>
+          <text x="30" y="320" font-size="18" font-family="ui-monospace,Menlo,monospace" fill="#9aa6b2">NOT DATA. YET.</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>Swipe →</span></div>
+</section>
+
+<!-- 2 · four records -->
+<section class="slide">
+  <div class="topbar"><span class="lbl"><i class="dot"></i>The problem</span><span class="lbl">02</span></div>
+  <div class="inner">
+    <h2>Four records.<br>Four owners.</h2>
+    <div class="split">
+      <div class="txt">
+        <ul>
+          <li><b>GP practice</b> — EMIS Web or SystmOne holds the lifelong record</li>
+          <li><b>Hospital trust</b> — its own EPR, its own login</li>
+          <li><b>Pharmacy</b> — dispensing records, usually unlinked</li>
+          <li><b>National</b> — NHS number, Spine, GP Connect: plumbing, not the record</li>
+        </ul>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 400 400" role="img" aria-label="Four separate record stacks that never connect">
+          <g stroke-width="3" fill="rgba(255,255,255,.03)">
+            <g stroke="#c8ff4d"><rect x="20" y="20" width="150" height="150"/></g>
+            <g stroke="#ffc04d"><rect x="230" y="20" width="150" height="150"/></g>
+            <g stroke="#9aa6b2"><rect x="20" y="230" width="150" height="150"/></g>
+            <g stroke="#ff7a8a"><rect x="230" y="230" width="150" height="150"/></g>
+          </g>
+          <g fill="#f2f4f7" opacity=".85" font-family="ui-monospace,Menlo,monospace" font-size="15">
+            <text x="38" y="60">PRACTICE</text><text x="248" y="60">TRUST</text>
+            <text x="38" y="270">PHARMACY</text><text x="248" y="270">NATIONAL</text>
+          </g>
+          <g stroke="#f2f4f7" stroke-width="2" opacity=".35">
+            <path d="M55 90 H110 M55 112 H130 M55 134 H95"/>
+            <path d="M265 90 H320 M265 112 H340"/>
+            <path d="M55 300 H120 M55 322 H100"/>
+            <path d="M265 300 H330 M265 322 H305"/>
+          </g>
+          <g stroke="#ff7a8a" stroke-width="3" stroke-dasharray="6 7">
+            <path d="M175 95 L225 95"/><path d="M175 305 L225 305"/>
+            <path d="M95 175 L95 225"/><path d="M305 175 L305 225"/>
+          </g>
+          <text x="150" y="212" font-size="26" font-family="ui-monospace,Menlo,monospace" fill="#ff7a8a">✕ ✕</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>02</span></div>
+</section>
+
+<!-- 3 · the join is a letter -->
+<section class="slide">
+  <div class="topbar"><span class="lbl"><i class="dot"></i>The problem</span><span class="lbl">03</span></div>
+  <div class="inner">
+    <h2>So what joins them?</h2>
+    <div class="split">
+      <div class="txt">
+        <p class="lead">Discharge summaries and clinic letters, arriving as documents.</p>
+        <div class="rule"></div>
+        <p style="font-size:23px">A PDF is not a database row. Someone must read it, decide what it means, and code it — before the record knows anything at all.</p>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 400 380" role="img" aria-label="A letter travelling from a hospital record to a practice record">
+          <g stroke="#9aa6b2" stroke-width="3" fill="rgba(255,255,255,.03)">
+            <rect x="10" y="20" width="120" height="110"/>
+            <rect x="270" y="250" width="120" height="110"/>
+          </g>
+          <text x="22" y="52" font-size="14" font-family="ui-monospace,Menlo,monospace" fill="#9aa6b2">HOSPITAL</text>
+          <text x="282" y="282" font-size="14" font-family="ui-monospace,Menlo,monospace" fill="#9aa6b2">PRACTICE</text>
+          <g stroke="#c8ff4d" stroke-width="3" fill="none" stroke-dasharray="9 8">
+            <path d="M130 90 C200 120 210 240 270 300"/>
+          </g>
+          <g transform="translate(150,150)">
+            <rect x="0" y="0" width="110" height="76" fill="#c8ff4d"/>
+            <path d="M0 0 L55 40 L110 0" stroke="#0e1116" stroke-width="3" fill="none"/>
+            <text x="10" y="66" font-size="15" font-family="ui-monospace,Menlo,monospace" fill="#0e1116">LETTER</text>
+          </g>
+          <text x="10" y="368" font-size="17" font-family="ui-monospace,Menlo,monospace" fill="#ff7a8a">A HUMAN IS THE INTERFACE</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>03</span></div>
+</section>
+
+<!-- 4 · six hands -->
+<section class="slide">
+  <div class="topbar"><span class="lbl"><i class="dot"></i>The problem</span><span class="lbl">04</span></div>
+  <div class="inner">
+    <h2>Six hands.<br>Two are manual.</h2>
+    <div class="split">
+      <div class="txt">
+        <ul>
+          <li>Arrives →</li>
+          <li>filed as a document →</li>
+          <li><b>read and coded by a person</b> →</li>
+          <li><b>filed to the record, by a person</b> →</li>
+          <li>recall depends on the code →</li>
+          <li>clinician acts, days later</li>
+        </ul>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 400 360" role="img" aria-label="A relay of six steps, two of them marked as manual">
+          <g stroke="#9aa6b2" stroke-width="3" fill="#0e1116">
+            <circle cx="70" cy="80" r="36"/><circle cx="200" cy="80" r="36"/>
+            <circle cx="200" cy="270" r="36"/><circle cx="70" cy="270" r="36"/>
+          </g>
+          <g stroke="#c8ff4d" stroke-width="4" fill="#c8ff4d">
+            <circle cx="330" cy="80" r="38"/><circle cx="330" cy="270" r="38"/>
+          </g>
+          <g font-family="ui-monospace,Menlo,monospace" font-size="22" text-anchor="middle">
+            <text x="70" y="88" fill="#f2f4f7">1</text><text x="200" y="88" fill="#f2f4f7">2</text>
+            <text x="330" y="88" fill="#0e1116">3</text><text x="330" y="278" fill="#0e1116">4</text>
+            <text x="200" y="278" fill="#f2f4f7">5</text><text x="70" y="278" fill="#f2f4f7">6</text>
+          </g>
+          <g stroke="#9aa6b2" stroke-width="2.5" fill="none" stroke-dasharray="7 6">
+            <path d="M106 80 L160 80"/><path d="M236 80 L288 80"/>
+            <path d="M330 118 L330 232"/>
+            <path d="M292 270 L240 270"/><path d="M164 270 L108 270"/>
+          </g>
+          <text x="6" y="344" font-size="16" font-family="ui-monospace,Menlo,monospace" fill="#ff7a8a">STEPS 3 AND 4 ARE DONE BY HAND</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>04</span></div>
+</section>
+
+<!-- 5 · cost -->
+<section class="slide">
+  <div class="topbar"><span class="lbl"><i class="dot"></i>The problem</span><span class="lbl">05</span></div>
+  <div class="inner">
+    <h2>What that costs</h2>
+    <div class="split">
+      <div class="txt">
+        <ul>
+          <li><b>Coding lag</b> — on paper, not in the searchable record</li>
+          <li><b>Recall misses</b> — queries run on codes</li>
+          <li><b>Duplication</b> — typed again elsewhere</li>
+          <li><b>Delay</b> — an inbox result is an absent result</li>
+        </ul>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 400 400" role="img" aria-label="A queue of documents waiting behind a clock">
+          <circle cx="200" cy="150" r="96" fill="none" stroke="#f2f4f7" stroke-width="3" opacity=".5"/>
+          <circle cx="200" cy="150" r="78" fill="none" stroke="#c8ff4d" stroke-width="3"/>
+          <g stroke="#c8ff4d" stroke-width="4" fill="none">
+            <path d="M200 150 L200 100"/><path d="M200 150 L238 172"/>
+          </g>
+          <circle cx="200" cy="150" r="6" fill="#c8ff4d"/>
+          <g stroke="#ff7a8a" stroke-width="3" fill="rgba(255,122,138,.10)">
+            <rect x="40" y="290" width="90" height="66"/><rect x="150" y="290" width="90" height="66"/>
+            <rect x="260" y="290" width="90" height="66"/>
+          </g>
+          <g stroke="#ff7a8a" stroke-width="2" opacity=".8">
+            <path d="M56 312 H114 M56 330 H100"/><path d="M166 312 H224 M166 330 H210"/>
+            <path d="M276 312 H334 M276 330 H320"/>
+          </g>
+          <text x="40" y="384" font-size="16" font-family="ui-monospace,Menlo,monospace" fill="#ff7a8a">THE QUEUE DOES NOT CLEAR ITSELF</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>05</span></div>
+</section>
+
+<!-- 6 · architecture -->
+<section class="slide light">
+  <div class="topbar"><span class="lbl"><i class="dot" style="background:#3c6b00"></i>What we built</span><span class="lbl">06</span></div>
+  <div class="inner">
+    <h2>Structure of the<br>running code</h2>
+    <svg viewBox="0 0 900 300" role="img" aria-label="React dashboard, FastAPI backend, ten agents, database, ingestion, connectors">
+      <defs><marker id="c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M0 0 L10 5 L0 10 z" fill="#0e1116"/></marker></defs>
+      <g font-family="Space Grotesk,Segoe UI,sans-serif" font-size="19">
+        <g fill="#fff" stroke="rgba(14,17,22,.22)">
+          <rect x="0" y="0" width="270" height="92"/><rect x="315" y="0" width="270" height="92"/><rect x="630" y="0" width="270" height="92"/>
+          <rect x="315" y="140" width="270" height="80"/><rect x="0" y="222" width="425" height="78"/><rect x="475" y="222" width="425" height="78"/>
+        </g>
+        <text x="18" y="38" font-weight="700" fill="#0e1116">React SPA</text><text x="18" y="68" fill="#6b7480" font-size="17">24 screens</text>
+        <text x="333" y="38" font-weight="700" fill="#0e1116">FastAPI</text><text x="333" y="68" fill="#6b7480" font-size="17">21 modules / 151 routes</text>
+        <text x="648" y="38" font-weight="700" fill="#0e1116">10 care agents</text><text x="648" y="68" fill="#6b7480" font-size="17">scheduled loop</text>
+        <text x="333" y="176" font-weight="700" fill="#0e1116">PostgreSQL</text><text x="333" y="204" fill="#6b7480" font-size="17">FHIR R4 records</text>
+        <text x="18" y="258" font-weight="700" fill="#0e1116">Ingestion</text><text x="18" y="286" fill="#6b7480" font-size="17">photo or PDF → fields → FHIR</text>
+        <text x="493" y="258" font-weight="700" fill="#0e1116">Connectors</text><text x="493" y="286" fill="#6b7480" font-size="17">FHIR standard · identity service</text>
+        <g stroke="#0e1116" stroke-width="3" fill="none" marker-end="url(#c)">
+          <path d="M270 46 L307 46"/><path d="M585 46 L622 46"/>
+          <path d="M450 92 L450 132"/><path d="M450 220 L450 214"/>
+        </g>
+      </g>
+    </svg>
+    <div class="split" style="margin-top:24px">
+      <div class="txt">
+        <p style="font-size:22px"><b>One source of truth</b> — the agents read the same records clinicians write.</p>
+      </div>
+      <div class="txt">
+        <p style="font-size:22px"><b>Tenant-scoped</b> — the JWT carries the practice; every query is filtered.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>06</span></div>
+</section>
+
+<!-- 7 · mapping -->
+<section class="slide light">
+  <div class="topbar"><span class="lbl"><i class="dot" style="background:#3c6b00"></i>What we built</span><span class="lbl">07</span></div>
+  <div class="inner">
+    <h2>Written for India.<br>Mapped for the UK.</h2>
+    <div class="split">
+      <div class="txt">
+        <table>
+          <tr><th>In the code</th><th>UK</th></tr>
+          <tr><td>ABHA / UHID</td><td>NHS number</td></tr>
+          <tr><td>ICD-10</td><td>SNOMED CT</td></tr>
+          <tr><td>FHIR R4</td><td>UK Core</td></tr>
+          <tr><td>DPDP 2025</td><td>UK GDPR</td></tr>
+        </table>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 400 340" role="img" aria-label="One block relabelled from an Indian identity system to the NHS one">
+          <g stroke="rgba(14,17,22,.22)" fill="#fff" stroke-width="3">
+            <rect x="20" y="20" width="150" height="120"/>
+            <rect x="230" y="180" width="150" height="120"/>
+          </g>
+          <text x="34" y="58" font-size="15" font-family="ui-monospace,Menlo,monospace" fill="#6b7480">BEFORE</text>
+          <text x="34" y="92" font-size="26" font-weight="700" fill="#0e1116">ABHA</text>
+          <text x="34" y="120" font-size="17" fill="#6b7480">UHID record</text>
+          <text x="244" y="218" font-size="15" font-family="ui-monospace,Menlo,monospace" fill="#6b7480">AFTER</text>
+          <text x="244" y="252" font-size="26" font-weight="700" fill="#0e1116">NHS no.</text>
+          <text x="244" y="280" font-size="17" fill="#6b7480">national identity</text>
+          <g stroke="#3c6b00" stroke-width="4" fill="none">
+            <path d="M180 80 C260 80 300 140 300 172" marker-end="url(#m)"/>
+          </g>
+          <defs><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0 0 L10 5 L0 10 z" fill="#3c6b00"/></marker></defs>
+          <text x="120" y="316" font-size="16" font-family="ui-monospace,Menlo,monospace" fill="#3c6b00">SAME ENGINE, NEW TERMINOLOGY</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>07</span></div>
+</section>
+
+<!-- 8 · flowchart -->
+<section class="slide light">
+  <div class="topbar"><span class="lbl"><i class="dot" style="background:#3c6b00"></i>What we built</span><span class="lbl">08</span></div>
+  <div class="inner">
+    <h2>One letter,<br>three outcomes</h2>
+    <svg viewBox="0 0 900 560" role="img" aria-label="Flowchart with NHS number check and clinician confirmation">
+      <defs>
+        <marker id="f" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#0e1116"/></marker>
+        <marker id="fr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" fill="#b02334"/></marker>
+      </defs>
+      <g font-family="Space Grotesk,Segoe UI,sans-serif" font-size="20">
+        <g fill="#fff" stroke="rgba(14,17,22,.22)">
+          <rect x="10" y="6" width="250" height="70"/><rect x="300" y="6" width="250" height="70"/>
+          <rect x="640" y="128" width="250" height="70"/><rect x="300" y="242" width="260" height="74"/>
+          <rect x="10" y="352" width="250" height="70"/><rect x="630" y="352" width="260" height="70"/>
+          <rect x="10" y="482" width="250" height="70"/><rect x="300" y="482" width="260" height="70"/>
+        </g>
+        <polygon points="450,112 560,162 450,212 340,162" fill="#f4f2ec" stroke="rgba(14,17,22,.22)"/>
+        <polygon points="445,344 575,396 445,448 315,396" fill="#f4f2ec" stroke="rgba(14,17,22,.22)"/>
+        <text x="32" y="38" font-weight="700" fill="#0e1116">Letter / PDF</text>
+        <text x="32" y="64" fill="#6b7480" font-size="18">at the practice</text>
+        <text x="322" y="38" font-weight="700" fill="#0e1116">Extract fields</text>
+        <text x="322" y="64" fill="#6b7480" font-size="18">diagnosis, drug, date</text>
+        <text x="392" y="156" font-weight="700" fill="#0e1116" font-size="18">NHS</text>
+        <text x="384" y="180" font-weight="700" fill="#0e1116" font-size="18">number?</text>
+        <text x="662" y="158" font-weight="700" fill="#b02334">Manual review</text>
+        <text x="662" y="184" fill="#6b7480" font-size="18">not matched</text>
+        <text x="322" y="276" font-weight="700" fill="#0e1116">Propose SNOMED CT</text>
+        <text x="322" y="302" fill="#6b7480" font-size="18">code + confidence</text>
+        <text x="386" y="388" font-weight="700" fill="#0e1116" font-size="18">Clinician</text>
+        <text x="380" y="412" font-weight="700" fill="#0e1116" font-size="18">confirms?</text>
+        <text x="32" y="384" font-weight="700" fill="#0e1116">Write FHIR</text>
+        <text x="32" y="410" fill="#6b7480" font-size="18">on the NHS number</text>
+        <text x="652" y="384" font-weight="700" fill="#b02334">Manual file</text>
+        <text x="652" y="410" fill="#6b7480" font-size="18">rejected, no write</text>
+        <text x="32" y="514" font-weight="700" fill="#0e1116">Audit log</text>
+        <text x="32" y="540" fill="#6b7480" font-size="18">who read / coded</text>
+        <text x="322" y="514" font-weight="700" fill="#0e1116">Recall eligible</text>
+        <text x="322" y="540" fill="#6b7480" font-size="18">code now searchable</text>
+        <g stroke="#0e1116" stroke-width="3" fill="none" marker-end="url(#f)">
+          <path d="M260 41 L292 41"/><path d="M425 76 L425 104 L444 116"/>
+          <path d="M450 212 L450 234"/><path d="M450 316 L450 336"/>
+          <path d="M315 396 L268 396"/><path d="M135 422 L135 474"/><path d="M270 517 L292 517"/>
+        </g>
+        <g stroke="#b02334" stroke-width="3" fill="none" marker-end="url(#fr)">
+          <path d="M560 162 L632 162"/><path d="M575 396 L622 396"/>
+          <path d="M535 362 C582 338 590 312 586 296" stroke-dasharray="8 7"/>
+        </g>
+        <text x="458" y="230" font-size="17" font-weight="700" fill="#0e1116">yes</text>
+        <text x="572" y="152" font-size="17" font-weight="700" fill="#b02334">no</text>
+        <text x="272" y="386" font-size="17" font-weight="700" fill="#0e1116">accept</text>
+        <text x="578" y="386" font-size="17" font-weight="700" fill="#b02334">reject</text>
+        <text x="592" y="330" font-size="17" font-weight="700" fill="#b02334">edit</text>
+      </g>
+    </svg>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>08</span></div>
+</section>
+
+<!-- 9 · numbers -->
+<section class="slide">
+  <div class="topbar"><span class="lbl"><i class="dot"></i>In the repo</span><span class="lbl">09</span></div>
+  <div class="inner">
+    <p class="lbl" style="margin-bottom:8px">What exists today</p>
+    <div class="split" style="align-items:flex-end">
+      <div class="txt"><div class="big-num">151</div><p style="font-size:21px">REST endpoints<br>across 21 modules</p></div>
+      <div class="txt"><div class="big-num">24</div><p style="font-size:21px">clinical screens<br>React + TypeScript</p></div>
+    </div>
+    <div class="split" style="align-items:flex-end;margin-top:16px">
+      <div class="txt"><div class="big-num">10</div><p style="font-size:21px">care agents<br>on a schedule</p></div>
+      <div class="txt"><div class="big-num">33<span style="font-size:50px">/45</span></div><p style="font-size:21px">build tasks<br>complete</p></div>
+    </div>
+    <div class="rule"></div>
+    <p style="font-size:22px;line-height:1.5">patient intake · appointments · medication adherence · follow-up · labs · pharmacy · insurance · risk prediction · family care · voice care</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>09</span></div>
+</section>
+
+<!-- 10 · limits -->
+<section class="slide light">
+  <div class="topbar"><span class="lbl"><i class="dot" style="background:#3c6b00"></i>Limits</span><span class="lbl">10</span></div>
+  <div class="inner">
+    <h2>What it will not<br>do — or claim</h2>
+    <div class="split" style="align-items:flex-start">
+      <div class="txt">
+        <ul>
+          <li><b>No diagnosis</b> — no autonomous clinical decision</li>
+          <li><b>No shared pool</b> — no cross-practice data</li>
+          <li><b>No silent writes</b> — every fact attributable</li>
+          <li><b>No certificates</b> — DTAC, DSPT, DCB0129 not held</li>
+        </ul>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 400 300" role="img" aria-label="A browser window showing six clickable clinic screens">
+          <g stroke="rgba(14,17,22,.28)" fill="#fff" stroke-width="3">
+            <rect x="10" y="20" width="380" height="250"/>
+            <path d="M10 62 H390"/>
+          </g>
+          <g fill="#b02334"><circle cx="34" cy="41" r="5"/></g>
+          <g fill="#c98a00"><circle cx="52" cy="41" r="5"/></g>
+          <g fill="#3c6b00"><circle cx="70" cy="41" r="5"/></g>
+          <g fill="#f4f2ec" stroke="rgba(14,17,22,.18)" stroke-width="2">
+            <rect x="28" y="84" width="106" height="70"/><rect x="147" y="84" width="106" height="70"/>
+            <rect x="266" y="84" width="106" height="70"/>
+            <rect x="28" y="170" width="106" height="70"/><rect x="147" y="170" width="106" height="70"/>
+            <rect x="266" y="170" width="106" height="70"/>
+          </g>
+          <g fill="#3c6b00">
+            <rect x="40" y="148" width="60" height="4"/><rect x="159" y="148" width="60" height="4"/>
+            <rect x="278" y="148" width="60" height="4"/><rect x="40" y="234" width="60" height="4"/>
+            <rect x="159" y="234" width="60" height="4"/><rect x="278" y="234" width="60" height="4"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <p class="lbl" style="margin-bottom:8px">See the loop — six screens, sample data</p>
+    <p style="font-size:30px;font-weight:700;letter-spacing:-.02em">19p1362.github.io/portfolio/healthbridge</p>
+    <p class="lbl" style="margin-top:22px">Gonela Abhilash · CPC · registered pharmacist · MSc Public Health, ARU</p>
+  </div>
+  <div class="foot"><span>HealthBridge</span><span>10</span></div>
+</section>
+
+<script>
+(function(){
+  var n=parseInt((location.hash||'').replace('#',''),10); if(!n)return;
+  var s=[].slice.call(document.querySelectorAll('.slide'));
+  if(s[n-1]){document.body.classList.add('solo');s[n-1].classList.add('on');}
+})();
+</script>
+</body>
+</html>
