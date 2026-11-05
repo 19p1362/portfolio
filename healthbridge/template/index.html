@@ -50,6 +50,7 @@
   .foot{position:absolute;left:76px;right:76px;bottom:30px;display:flex;justify-content:space-between;
     font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#7d93a3;z-index:2}
   svg{display:block}
+  .ico{margin-bottom:10px}
   @page{size:1600px 900px;margin:0}
   @media print{
     html,body{background:#fff}
@@ -68,16 +69,20 @@
   <div class="inner">
     <div style="display:flex;align-items:center;gap:56px">
       <svg width="300" height="300" viewBox="0 0 330 330" aria-hidden="true" style="flex:0 0 auto">
-        <circle cx="165" cy="165" r="152" fill="#FFC04D"/>
-        <rect x="112" y="96" width="96" height="150" rx="18" fill="#fff" stroke="#2D4146" stroke-width="7"/>
-        <rect x="130" y="68" width="60" height="34" rx="10" fill="#fff" stroke="#2D4146" stroke-width="7"/>
-        <rect x="124" y="142" width="72" height="36" rx="8" fill="#3699D5"/>
-        <g transform="rotate(-18 96 214)">
-          <rect x="58" y="196" width="76" height="36" rx="18" fill="#fff" stroke="#2D4146" stroke-width="7"/>
-          <path d="M96 202 L96 226" stroke="#2D4146" stroke-width="6"/>
+        <circle cx="165" cy="165" r="150" fill="#FFC04D"/>
+        <g stroke="#2D4146" stroke-width="7" fill="#fff">
+          <rect x="86" y="96" width="165" height="120" rx="6"/>
+          <path d="M86 96 L168 165 L251 96" fill="none"/>
         </g>
-        <circle cx="244" cy="224" r="24" fill="#fff" stroke="#2D4146" stroke-width="7"/>
-        <circle cx="244" cy="224" r="9" fill="#FFC04D"/>
+        <g fill="#3699D5">
+          <rect x="112" y="140" width="112" height="10"/>
+          <rect x="112" y="160" width="80" height="10" opacity=".6"/>
+        </g>
+        <g stroke="#2D4146" stroke-width="7" fill="#fff">
+          <rect x="150" y="222" width="110" height="46" rx="10"/>
+        </g>
+        <text x="166" y="254" font-size="22" font-family="Nunito,Arial" font-weight="800" fill="#0d1621">FHIR</text>
+        <path d="M168 216 L168 224" stroke="#2D4146" stroke-width="7"/>
       </svg>
       <div style="min-width:0">
         <div class="rule"></div>
@@ -100,10 +105,10 @@
     <div class="kicker">The problem · 1 of 3</div>
     <h2>Four records, four owners</h2>
     <div class="grid4">
-      <div class="card"><h3>GP practice</h3><p>Independent contractors. The lifelong record lives in EMIS Web or SystmOne.</p></div>
-      <div class="card"><h3>Hospital trust</h3><p>Its own electronic patient record, separate system and login.</p></div>
-      <div class="card"><h3>Pharmacy</h3><p>Its own dispensing record, often unconnected to the practice.</p></div>
-      <div class="card"><h3>National</h3><p>NHS number, Spine and GP Connect — plumbing, not the record.</p></div>
+      <div class="card"><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><g stroke="#2D4146" stroke-width="3" fill="#fff"><rect x="7" y="17" width="28" height="18" rx="3"/><path d="M5 17 L21 6 L37 17"/></g><path d="M21 22 V30 M17 26 H25" stroke="#0875B9" stroke-width="3.5"/></svg><h3>GP practice</h3><p>Independent contractors. The lifelong record lives in EMIS Web or SystmOne.</p></div>
+      <div class="card"><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><g stroke="#2D4146" stroke-width="3" fill="#fff"><rect x="8" y="10" width="26" height="26" rx="3"/></g><g fill="#0875B9"><rect x="14" y="16" width="5" height="5"/><rect x="23" y="16" width="5" height="5"/><rect x="14" y="25" width="5" height="5"/><rect x="23" y="25" width="5" height="5"/></g></svg><h3>Hospital trust</h3><p>Its own electronic patient record, separate system and login.</p></div>
+      <div class="card"><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><g stroke="#2D4146" stroke-width="3" fill="#fff"><rect x="13" y="13" width="16" height="22" rx="4"/><rect x="17" y="7" width="8" height="6" rx="2"/></g><rect x="16" y="20" width="10" height="8" fill="#3699D5"/></svg><h3>Pharmacy</h3><p>Its own dispensing record, often unconnected to the practice.</p></div>
+      <div class="card"><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><g stroke="#0875B9" stroke-width="3" fill="none"><path d="M21 8 L9 32 M21 8 L33 32 M9 32 L33 32"/></g><g fill="#FFC04D" stroke="#2D4146" stroke-width="2.5"><circle cx="21" cy="8" r="5"/><circle cx="9" cy="32" r="5"/><circle cx="33" cy="32" r="5"/></g></svg><h3>National</h3><p>NHS number, Spine and GP Connect — plumbing, not the record.</p></div>
     </div>
     <p class="lead" style="margin-top:34px;max-width:70ch">So there is no single patient record. There are several — and the thing joining them is not a database.</p>
   </div>
@@ -151,10 +156,10 @@
     <div class="kicker">The solution · 1 of 3</div>
     <h2>Fix the manual middle</h2>
     <div class="grid4" style="margin-bottom:26px">
-      <div class="card"><div class="num">1</div><h3>Read</h3><p>Letter or PDF in; diagnosis, medicine, action and dates out.</p></div>
-      <div class="card"><div class="num">2</div><h3>Propose</h3><p>A SNOMED CT code per fact, with a confidence — not a decision.</p></div>
-      <div class="card"><div class="num">3</div><h3>Confirm</h3><p>A clinician accepts, edits or rejects. Human, before the record.</p></div>
-      <div class="card"><div class="num">4</div><h3>File</h3><p>FHIR R4 records on the NHS number, with an audit trail.</p></div>
+      <div class="card"><div class="num">1</div><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><g stroke="#2D4146" stroke-width="3" fill="#fff"><rect x="7" y="8" width="22" height="26" rx="3"/></g><g stroke="#0875B9" stroke-width="2.5"><path d="M12 15 H24 M12 21 H24 M12 27 H19"/></g><circle cx="29" cy="28" r="7" fill="#FFC04D" stroke="#2D4146" stroke-width="3"/><path d="M34 33 L38 37" stroke="#2D4146" stroke-width="3"/></svg><h3>Read</h3><p>Letter or PDF in; diagnosis, medicine, action and dates out.</p></div>
+      <div class="card"><div class="num">2</div><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><path d="M8 21 L21 8 H34 V21 L21 34 Z" fill="#fff" stroke="#2D4146" stroke-width="3"/><circle cx="28" cy="14" r="3.5" fill="#FFC04D" stroke="#2D4146" stroke-width="2.5"/><path d="M14 24 H22 M14 29 H19" stroke="#0875B9" stroke-width="2.5"/></svg><h3>Propose</h3><p>A SNOMED CT code per fact, with a confidence — not a decision.</p></div>
+      <div class="card"><div class="num">3</div><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15" fill="#fff" stroke="#2D4146" stroke-width="3"/><path d="M13 21 L19 27 L30 15" fill="none" stroke="#0d9b6c" stroke-width="4"/></svg><h3>Confirm</h3><p>A clinician accepts, edits or rejects. Human, before the record.</p></div>
+      <div class="card"><div class="num">4</div><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><g stroke="#2D4146" stroke-width="3" fill="#fff"><ellipse cx="21" cy="11" rx="13" ry="5"/><path d="M8 11 V31 C8 34 14 36 21 36 C28 36 34 34 34 31 V11"/></g><path d="M8 21 C8 24 14 26 21 26 C28 26 34 24 34 21" fill="none" stroke="#3699D5" stroke-width="3"/></svg><h3>File</h3><p>FHIR R4 records on the NHS number, with an audit trail.</p></div>
     </div>
     <div class="card blue">
       <p style="font-size:26px">The machine does the reading. The clinician keeps the decision. Nothing is written silently.</p>
@@ -190,10 +195,10 @@
     <div class="kicker">The solution · 3 of 3</div>
     <h2>What it will not do — and an honest limit</h2>
     <div class="grid4" style="margin-bottom:24px">
-      <div class="card"><h3>No diagnosis</h3><p>No autonomous clinical decision, ever.</p></div>
-      <div class="card"><h3>No shared pool</h3><p>No cross-practice patient data.</p></div>
-      <div class="card"><h3>No silent writes</h3><p>Every filed fact is attributable.</p></div>
-      <div class="card"><h3>No claims</h3><p>No UK certification held today.</p></div>
+      <div class="card"><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15" fill="#fff" stroke="#2D4146" stroke-width="3"/><path d="M11 31 L31 11" stroke="#c62846" stroke-width="4"/><path d="M21 14 V24 M21 28 V29" stroke="#0875B9" stroke-width="3.5"/></svg><h3>No diagnosis</h3><p>No autonomous clinical decision, ever.</p></div>
+      <div class="card"><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><g stroke="#2D4146" stroke-width="3" fill="#fff"><rect x="5" y="12" width="14" height="20" rx="2"/><rect x="23" y="12" width="14" height="20" rx="2"/></g><path d="M21 9 V34" stroke="#c62846" stroke-width="3" stroke-dasharray="5 4"/></svg><h3>No shared pool</h3><p>No cross-practice patient data.</p></div>
+      <div class="card"><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><g stroke="#2D4146" stroke-width="3" fill="#fff"><rect x="12" y="19" width="18" height="14" rx="3"/><path d="M16 19 V14 C16 9 26 9 26 14 V19"/></g><circle cx="21" cy="26" r="2.6" fill="#FFC04D"/></svg><h3>No silent writes</h3><p>Every filed fact is attributable.</p></div>
+      <div class="card"><svg class="ico" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><g stroke="#2D4146" stroke-width="3" fill="#fff"><rect x="9" y="7" width="24" height="18" rx="2"/><circle cx="21" cy="32" r="4"/><path d="M18 28 L17 22 M24 28 L25 22"/></g><path d="M11 30 L31 12" stroke="#c62846" stroke-width="3.5"/></svg><h3>No claims</h3><p>No UK certification held today.</p></div>
     </div>
     <div class="card blue">
       <p style="font-size:24px;margin-bottom:14px"><b>See it in 30 seconds</b> — six clickable screens, sample data, no sign-up.</p>
